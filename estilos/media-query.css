@@ -6,38 +6,296 @@
     box-sizing: border-box;
 }
 
+
 @media (max-width: 992px) {
+
     aside.sidebar {
-        display: none;
+        width: 100%;
+        height: auto;
+        position: sticky;
+        top: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+        border-right: none;
+        border-bottom: 1px solid rgba(29, 78, 216, 0.4);
+        z-index: 200;
     }
- 
+
+    .logo {
+        font-size: 1.8em;
+    }
+
+    .menu {
+        flex-direction: row;
+        gap: 4px;
+    }
+
+    .menu > a {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+
+    .menu > a:hover {
+        padding-left: 12px; 
+    }
+
+
     .container {
         margin-left: 0;
-        padding: 40px 24px;
+        padding: 48px 32px;
     }
- 
+
     .hero {
         flex-direction: column-reverse;
+        align-items: center;
         text-align: center;
         min-height: auto;
-        padding: 60px 0 40px;
+        padding: 48px 0 32px;
+        gap: 40px;
     }
- 
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text > h1 {
+        font-size: 2.2em;
+    }
+
+    .hero-text > p {
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
     .buttons {
         justify-content: center;
     }
- 
+
     .hero-image > img {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
     }
- 
-    .hero-text > h1 {
-        font-size: 2em;
+
+    .skills-area {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
     }
- 
+
+    .skills-card {
+        text-align: center;
+    }
+
+
+    .tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tab {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+
     .contact {
         flex-direction: column;
-        gap: 40px;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    aside.sidebar {
+        padding: 14px 16px;
+    }
+
+    .logo {
+        font-size: 1.5em;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        background: transparent;
+        border: 1px solid rgba(59, 130, 246, 0.4);
+        color: #3B82F6;
+        font-size: 1.2em;
+        padding: 6px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .menu.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        background: #071026;
+        border-bottom: 1px solid rgba(29, 78, 216, 0.4);
+        padding: 12px 16px 20px;
+        gap: 4px;
+        z-index: 300;
+    }
+
+    .menu.open > a {
+        font-size: 1em;
+        padding: 12px 16px;
+    }
+
+    .container {
+        padding: 32px 16px;
+    }
+
+
+    .hero {
+        padding: 32px 0 24px;
+        gap: 28px;
+    }
+
+    .hero-text > span {
+        font-size: 0.9em;
+    }
+
+    .hero-text > h1 {
+        font-size: 1.75em;
+        line-height: 1.2;
+    }
+
+    .hero-text > h2 {
+        font-size: 1.1em;
+        margin: 10px 0;
+    }
+
+    .hero-text > p {
+        font-size: 0.9em;
+        line-height: 1.7;
+    }
+
+    .hero-image > img {
+        width: 160px;
+        height: 160px;
+        border-width: 3px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 20px;
+        font-size: 0.95em;
+    }
+
+    .skills-area {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .skills-card {
+        padding: 16px 12px;
+        text-align: center;
+        font-size: 0.9em;
+    }
+
+    .skills,
+    .projetos {
+        margin-top: 64px;
+        padding-top: 32px;
+    }
+
+    .skills h2,
+    .projetos > h2 {
+        font-size: 1.4em;
+    }
+
+    .tabs {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .tab {
+        width: 100%;
+        text-align: left;
+        padding: 12px 16px;
+    }
+
+
+    .conteudo {
+        padding: 20px 16px;
+    }
+
+    .conteudo h3 {
+        font-size: 1.1em;
+    }
+
+    .conteudo p {
+        font-size: 0.88em;
+    }
+
+    .contact {
+        margin-top: 64px;
+        padding: 40px 0 60px;
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .contact > div > h3 {
+        font-size: 1.3em;
+    }
+
+    .contact > div > p {
+        font-size: 0.88em;
+    }
+
+    div.contato {
+        gap: 10px;
+    }
+
+    div.contato > p > a {
+        font-size: 0.88em;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .container {
+        padding: 24px 12px;
+    }
+
+    .hero-text > h1 {
+        font-size: 1.5em;
+    }
+
+    .hero-image > img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .skills-area {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .skills-card {
+        padding: 12px 8px;
+        font-size: 0.82em;
+    }
+
+    button {
+        max-width: 100%;
     }
 }
