@@ -97,6 +97,7 @@
     .tab {
         flex: 1 1 auto;
         text-align: center;
+        
     }
 
 
@@ -197,6 +198,7 @@
         max-width: 280px;
         padding: 14px 20px;
         font-size: 0.95em;
+        border: 1.5px solid rgba(1, 16, 41, 0.527);
     }
 
     .skills-area {
