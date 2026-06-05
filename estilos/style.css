@@ -240,24 +240,106 @@ button:active {
     font-size: 1.3em;
     margin-bottom: 12px;
 }
-
+.conteudo p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+.conteudo h4 {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+}
+.tech-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+.tech-tags button {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--blue-light);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 6px 16px;
+    font-size: 0.82em;
+    border-radius: 20px;
+}
+.tech-tags button:hover {
+    background: var(--blue-primary);
+    color: white;
+    transform: none;
+    box-shadow: none;
+}
+ 
+.conteudo a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--blue-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: var(--transition);
+}
+ 
+.conteudo a:hover {
+    color: var(--text-main);
+    gap: 10px;
+}
+ 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 .contact {
     margin-top: 100px;
-    padding-bottom: 50px;
+    padding: 60px 0 80px;
+    border-top: 1px solid rgba(29, 78, 216, 0.4);
     display: flex;
-    flex-flow: row nowrap;
-    margin: 10px;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: space-between;
+    align-items: flex-start;
 }
-
-footer > div > h3 {
-    color: white;
+ 
+.contact > div > h3 {
+    color: var(--text-main);
+    font-size: 1.6em;
+    margin-bottom: 12px;
 }
-footer > div > p {
+ 
+.contact > div > p {
     color: #CBD5E1;
+    max-width: 380px;
+    line-height: 1.7;
+    margin-bottom: 28px;
 }
-div.contato > p > a{
+ 
+.contact > div > button a {
+    color: white;
+    text-decoration: none;
+}
+ 
+div.contato {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 8px;
+}
+ 
+div.contato > p > a {
     color: #CBD5E1;
     text-decoration: none;
-    transition: 0.3s;
-
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95em;
+}
+ 
+div.contato > p > a:hover {
+    color: #3B82F6;
+    padding-left: 4px;
 }
