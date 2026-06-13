@@ -1,97 +1,353 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portifólio | Douglas Fernandes</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';"></link>
-    <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/media-query.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Douglas Fernandes, desenvolvedor front-end especializado em HTML, CSS, JavaScript e React." />
+  <title>Douglas Fernandes — Desenvolvedor Front-end</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="estilos/style.css" />
+  <link rel="stylesheet" href="estilos/media-query.css" />
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo">
-            &lt;/&gt;
+
+  <!-- =========================================
+       NAVEGAÇÃO LATERAL
+       ========================================= -->
+  <header class="sidebar" id="sidebar">
+    <a href="#inicio" class="logo" aria-label="Ir para o início">&lt;/&gt;</a>
+
+    <!-- Botão hambúrguer — só aparece em telas pequenas via CSS -->
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="menu" class="menu" aria-label="Menu principal">
+      <a href="#inicio"      class="menu-link">Início</a>
+      <a href="#sobre"       class="menu-link">Sobre</a>
+      <a href="#habilidades" class="menu-link">Habilidades</a>
+      <a href="#projetos"    class="menu-link">Projetos</a>
+      <a href="#contato"     class="menu-link">Contato</a>
+    </nav>
+  </header>
+
+  <!-- Fundo escuro quando o menu mobile está aberto -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+
+
+  <!-- =========================================
+       CONTEÚDO DA PÁGINA
+       ========================================= -->
+  <main class="pagina">
+
+
+    <!-- INÍCIO / HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-texto">
+        <p class="hero-saudacao">Olá, eu sou</p>
+        <h1>Douglas Fernandes</h1>
+        <h2 class="hero-cargo">Desenvolvedor Front-end</h2>
+        <p class="hero-descricao">
+          Gosto de transformar ideias em interfaces que as pessoas realmente conseguem usar.
+          Trabalho com HTML, CSS, JavaScript e React para criar sites modernos, rápidos e responsivos.
+        </p>
+        <div class="hero-acoes">
+          <a href="#projetos" class="btn btn-cheio">Ver projetos</a>
+          <a href="#contato"  class="btn btn-vazio">Entrar em contato</a>
         </div>
-        <nav class="menu">
-            <a href="#">Sobre</a>
-            <a href="#">Projetos</a>
-            <a href="#">Habilidades</a>
-            <a href="#">Contato</a>
-        </nav>
-    </aside>
+      </div>
 
-    <main class="container">
+      <div class="hero-foto">
+        <img src="imagem/perfil01.jpeg" alt="Foto de Douglas Fernandes sorrindo" />
+      </div>
+    </section>
 
-        <section class="hero" id="sobre">
-            <div class="hero-text">
-                <span>Olá, eu sou</span>
-                <h1>Douglas Fernandes de Jesus</h1>
-                <h2>Desenvolvedor Front end</h2>
-                <p>Desenvolvedor Front end apaixonado por criar interfaces modernas, responsivas e intuitivas. Transformo ideias em experiências digitais incríveis.</p>
-                <div class="buttons">
-                    <button>
-                        Ver Projetos
-                    </button>
-                    <button class="outline">
-                        Entrar em contato
-                    </button>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="imagem/perfil01.jpeg" alt="Douglas Fernandes">
-            </div>
-        </section>
-        <section class="skills" id="skills">
-            <h2>Tecnologias que utilizo</h2>
-            <div class="skills-area">
-                <div class="skills-card">HTML</div>
-                <div class="skills-card">CSS</div>
-                <div class="skills-card">Javascript</div>
-                <div class="skills-card">React</div>
-            </div>
-        </section>
-        <section class="projetos" id="projeto">
-            <h2>Projetos</h2>
-            <div class="tabs">
-                <button class="tab active" data-tab="landing">Landing Page</button>
-                <button class="tab" data-tab="datalist">Data List</button>
-                <button class="tab" data-tab="login">Tela de Login</button>
-            </div>
-            <div class="conteudo active" id="landing">
-                <h3>Landing Page</h3>
-                <p>Landing page moderna e responsiva, desenvolvida para apresentar serviços e gerar conversões.</p>
-                <h4>Tecnologias</h4>
-                <button>HTML</button>
-                <button>CSS</button>
-                <button>Javascript</button>
-                <button>React</button>
-                <p>Ver Projeto</p>
-                <a href="#">Abrir Projeto</a>
-            </div>
-            <div class="conteudo" id="datalist">
-                <h3>Data List</h3>
-                <p>Sistema de listagem dinâmica com manipulação de dados.</p>
-            </div>
-            <div class="conteudo" id="login">
-                <h3>Tela de login</h3>
-                <p>Interface moderna de autentificação responsiva.</p>
-            </div>
-            <div> Clique nas abas acima para visualizar os outros projetos</div>
-        </section>
-        <footer class="contact" id="contato">
-            <div>
-                <h3>Vamos trabalhar juntos?</h3>
-                <p>Estou sempre aberto a novas oportunidades de projetos incríveis. Vmos conversar!</p>
-                <button><a href="mailto:douglasfernandes855@gmail.com.?subject=&body=" target="_blank">Entrar em contato</a></button>
-            </div>
-            <div class="contato">
-                <p><a href="mailto:douglasfernandes855@gmail.com.?subject=&body=" target="_blank">douglasfernandes855@gmail.com</a></p>
-                <p><a href="https://github.com/DouglasFernandesDev" target="_blank">github.com/DouglasFernandesDev</a></p>
-                <p><a href="https://wa.me/5522998984135" target="_blank">Whatsapp</a></p>
-            </div>
-        </footer>
 
-    </main>
+    <!-- SOBRE -->
+    <section class="sobre" id="sobre">
+      <h2 class="titulo-secao">Sobre mim</h2>
+      <p>
+        Sou desenvolvedor front-end baseado no Rio de Janeiro, com foco em criar experiências
+        digitais que combinam boa aparência com usabilidade real. Gosto muito de aprender,
+        resolver problemas e colaborar em projetos que fazem diferença.
+      </p>
+      <p>
+        Quando não estou codando, estou estudando novas tecnologias ou experimentando
+        algum projeto pessoal para colocar o conhecimento em prática.
+      </p>
+    </section>
+
+
+    <!-- HABILIDADES -->
+    <section class="habilidades" id="habilidades">
+      <h2 class="titulo-secao">Habilidades</h2>
+
+      <!-- Abas de categoria -->
+      <div class="abas-habilidades" role="tablist" aria-label="Categorias de habilidades">
+        <button
+          class="aba-btn ativa"
+          role="tab"
+          id="tab-frontend"
+          aria-selected="true"
+          aria-controls="painel-frontend"
+          data-alvo="frontend">
+          Front-end
+        </button>
+        <button
+          class="aba-btn"
+          role="tab"
+          id="tab-ferramentas"
+          aria-selected="false"
+          aria-controls="painel-ferramentas"
+          data-alvo="ferramentas">
+          Ferramentas
+        </button>
+        <button
+          class="aba-btn"
+          role="tab"
+          id="tab-habilidades-extras"
+          aria-selected="false"
+          aria-controls="painel-habilidades-extras"
+          data-alvo="habilidades-extras">
+          Outras habilidades
+        </button>
+      </div>
+
+      <!-- Painel: Front-end -->
+      <div class="painel-habilidades ativo" id="painel-frontend" role="tabpanel" aria-labelledby="tab-frontend">
+        <ul class="lista-habilidades">
+          <li class="card-habilidade">
+            <div class="habilidade-topo">
+              <span class="habilidade-nome">HTML5</span>
+              <span class="habilidade-nivel">Avançado</span>
+            </div>
+            <div class="barra-progresso" aria-hidden="true">
+              <div class="barra-preenchimento" data-largura="95"></div>
+            </div>
+          </li>
+          <li class="card-habilidade">
+            <div class="habilidade-topo">
+              <span class="habilidade-nome">CSS3</span>
+              <span class="habilidade-nivel">Avançado</span>
+            </div>
+            <div class="barra-progresso" aria-hidden="true">
+              <div class="barra-preenchimento" data-largura="90"></div>
+            </div>
+          </li>
+          <li class="card-habilidade">
+            <div class="habilidade-topo">
+              <span class="habilidade-nome">JavaScript</span>
+              <span class="habilidade-nivel">Intermediário</span>
+            </div>
+            <div class="barra-progresso" aria-hidden="true">
+              <div class="barra-preenchimento" data-largura="78"></div>
+            </div>
+          </li>
+          <li class="card-habilidade">
+            <div class="habilidade-topo">
+              <span class="habilidade-nome">React</span>
+              <span class="habilidade-nivel">Intermediário</span>
+            </div>
+            <div class="barra-progresso" aria-hidden="true">
+              <div class="barra-preenchimento" data-largura="72"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Painel: Ferramentas -->
+      <div class="painel-habilidades" id="painel-ferramentas" role="tabpanel" aria-labelledby="tab-ferramentas" hidden>
+        <ul class="lista-habilidades">
+          <li class="card-habilidade">
+            <div class="habilidade-topo">
+              <span class="habilidade-nome">Git & GitHub</span>
+              <span class="habilidade-nivel">Avançado</span>
+            </div>
+            <div class="barra-progresso" aria-hidden="true">
+              <div class="barra-preenchimento" data-largura="88"></div>
+            </div>
+          </li>
+          <li class="card-habilidade">
+            <div class="habilidade-topo">
+              <span class="habilidade-nome">Figma</span>
+              <span class="habilidade-nivel">Básico</span>
+            </div>
+            <div class="barra-progresso" aria-hidden="true">
+              <div class="barra-preenchimento" data-largura="60"></div>
+            </div>
+          </li>
+          <li class="card-habilidade">
+            <div class="habilidade-topo">
+              <span class="habilidade-nome">VS Code</span>
+              <span class="habilidade-nivel">Avançado</span>
+            </div>
+            <div class="barra-progresso" aria-hidden="true">
+              <div class="barra-preenchimento" data-largura="92"></div>
+            </div>
+          </li>
+          <li class="card-habilidade">
+            <div class="habilidade-topo">
+              <span class="habilidade-nome">npm / Vite</span>
+              <span class="habilidade-nivel">Intermediário</span>
+            </div>
+            <div class="barra-progresso" aria-hidden="true">
+              <div class="barra-preenchimento" data-largura="75"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Painel: Outras habilidades -->
+      <div class="painel-habilidades" id="painel-habilidades-extras" role="tabpanel" aria-labelledby="tab-habilidades-extras" hidden>
+        <ul class="lista-tags">
+          <li class="tag">Trabalho em equipe</li>
+          <li class="tag">Comunicação clara</li>
+          <li class="tag">Resolução de problemas</li>
+          <li class="tag">Aprendizado contínuo</li>
+          <li class="tag">Atenção aos detalhes</li>
+          <li class="tag">Organização</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- PROJETOS -->
+    <section class="projetos" id="projetos">
+      <h2 class="titulo-secao">Projetos</h2>
+
+      <!-- Abas dos projetos -->
+      <div class="abas-projetos" role="tablist" aria-label="Projetos">
+        <button
+          class="aba-btn ativa"
+          role="tab"
+          id="tab-landing"
+          aria-selected="true"
+          aria-controls="painel-landing"
+          data-alvo="landing">
+          Landing Page
+        </button>
+        <button
+          class="aba-btn"
+          role="tab"
+          id="tab-datalist"
+          aria-selected="false"
+          aria-controls="painel-datalist"
+          data-alvo="datalist">
+          Data List
+        </button>
+        <button
+          class="aba-btn"
+          role="tab"
+          id="tab-login"
+          aria-selected="false"
+          aria-controls="painel-login"
+          data-alvo="login">
+          Tela de Login
+        </button>
+      </div>
+
+      <!-- Painel: Landing Page -->
+      <article class="painel-projeto ativo" id="painel-landing" role="tabpanel" aria-labelledby="tab-landing">
+        <h3>Landing Page</h3>
+        <p>
+          Uma landing page moderna e responsiva criada para apresentar um serviço e converter visitantes em clientes.
+          O foco foi na clareza visual e num CTA que realmente chama atenção.
+        </p>
+        <div class="projeto-meta">
+          <div class="projeto-tecnologias">
+            <span class="tecnologia-tag">HTML</span>
+            <span class="tecnologia-tag">CSS</span>
+            <span class="tecnologia-tag">JavaScript</span>
+            <span class="tecnologia-tag">React</span>
+          </div>
+          <a href="#" class="link-projeto" target="_blank" rel="noopener noreferrer">
+            Abrir projeto →
+          </a>
+        </div>
+      </article>
+
+      <!-- Painel: Data List -->
+      <article class="painel-projeto" id="painel-datalist" role="tabpanel" aria-labelledby="tab-datalist" hidden>
+        <h3>Data List</h3>
+        <p>
+          Sistema de listagem dinâmica com filtragem, ordenação e manipulação de dados em tempo real.
+          Um projeto prático para exercitar lógica com JavaScript puro.
+        </p>
+        <div class="projeto-meta">
+          <div class="projeto-tecnologias">
+            <span class="tecnologia-tag">HTML</span>
+            <span class="tecnologia-tag">CSS</span>
+            <span class="tecnologia-tag">JavaScript</span>
+          </div>
+          <a href="#" class="link-projeto" target="_blank" rel="noopener noreferrer">
+            Abrir projeto →
+          </a>
+        </div>
+      </article>
+
+      <!-- Painel: Tela de Login -->
+      <article class="painel-projeto" id="painel-login" role="tabpanel" aria-labelledby="tab-login" hidden>
+        <h3>Tela de Login</h3>
+        <p>
+          Interface de autenticação com validação de campos em tempo real e design responsivo.
+          Simples, limpa e com boa usabilidade em qualquer dispositivo.
+        </p>
+        <div class="projeto-meta">
+          <div class="projeto-tecnologias">
+            <span class="tecnologia-tag">HTML</span>
+            <span class="tecnologia-tag">CSS</span>
+            <span class="tecnologia-tag">JavaScript</span>
+          </div>
+          <a href="#" class="link-projeto" target="_blank" rel="noopener noreferrer">
+            Abrir projeto →
+          </a>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- CONTATO -->
+    <footer class="contato" id="contato">
+      <div class="contato-chamada">
+        <h2>Vamos trabalhar juntos?</h2>
+        <p>
+          Estou disponível para freelas, projetos colaborativos ou uma conversa
+          sobre alguma ideia. Me manda uma mensagem, respondo rápido.
+        </p>
+        <a href="mailto:douglasfernandes855@gmail.com?subject=Oi, vi seu portfólio" class="btn btn-cheio">
+          Mandar e-mail
+        </a>
+      </div>
+
+      <div class="contato-links">
+        <a href="mailto:douglasfernandes855@gmail.com?subject=Oi, vi seu portfólio" class="contato-item">
+          <span aria-hidden="true">✉</span>
+          douglasfernandes855@gmail.com
+        </a>
+        <a href="https://github.com/DouglasFernandesDev" class="contato-item" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">⌥</span>
+          github.com/DouglasFernandesDev
+        </a>
+        <a href="https://wa.me/5522998984135" class="contato-item" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">◎</span>
+          WhatsApp
+        </a>
+      </div>
+
+      <p class="rodape-copyright">
+        © <span id="ano-atual"></span> Douglas Fernandes. Feito com cuidado.
+      </p>
+    </footer>
+
+
+  </main><!-- fim .pagina -->
+
+  <script src="scripts/main.js"></script>
 </body>
 </html>

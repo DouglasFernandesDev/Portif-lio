@@ -1,345 +1,614 @@
-@charset "UTF-8";
 
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+
+/* ==============================================
+   style.css — Douglas Fernandes Portfólio
+   Organização:
+     1. Variáveis
+     2. Reset e base
+     3. Sidebar / navegação
+     4. Layout principal
+     5. Seção: Hero
+     6. Seção: Sobre
+     7. Seção: Habilidades
+     8. Seção: Projetos
+     9. Seção: Contato
+    10. Utilitários e animações
+   ============================================== */
+
+
+/* ----------------------------------------------
+   1. VARIÁVEIS
+   ---------------------------------------------- */
+:root {
+  /* Cores principais */
+  --azul:         #2563EB;
+  --azul-claro:   #3B82F6;
+  --azul-sutil:   rgba(37, 99, 235, 0.12);
+  --borda-azul:   rgba(37, 99, 235, 0.25);
+
+  /* Fundo */
+  --fundo:         #020617;
+  --fundo-card:    #0F172A;
+  --fundo-sidebar: #071026;
+
+  /* Texto */
+  --texto:        #F1F5F9;
+  --texto-suave:  #94A3B8;
+
+  /* Layout */
+  --largura-sidebar: 220px;
+
+  /* Tipografia */
+  --fonte: 'Poppins', sans-serif;
+
+  /* Espaçamentos de seção */
+  --espaco-secao: 100px;
+
+  /* Bordas e arredondamentos */
+  --raio-sm: 8px;
+  --raio-md: 12px;
+
+  /* Transição padrão */
+  --transicao: 0.25s ease;
+}
+
+
+/* ----------------------------------------------
+   2. RESET E BASE
+   ---------------------------------------------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-    background-color: #020617;
-    font-family: 'Poppins', sans-serif;
-    color: #F8FAFC;
-    line-height: 1.6;
-}
-html {
-    scroll-behavior: smooth;
+  background-color: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
-aside.sidebar {
-    background-color: #071026;
-    color: white;
-    width: 220px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 40px 24px;
-    border-right: 1px solid #1D4ED8;
-
-    display: flex;
-    flex-flow: column;
-    gap: 48px;
-    z-index: 100;
-    
+a {
+  color: inherit;
+  text-decoration: none;
 }
-.logo{
-    font-size: 2.2em;
-    font-weight: 700;
-    text-align: center;
-    color: #2563EB;
-    letter-spacing: -1px;
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Foco visível para navegação por teclado */
+:focus-visible {
+  outline: 2px solid var(--azul-claro);
+  outline-offset: 3px;
+  border-radius: var(--raio-sm);
+}
+
+
+/* ----------------------------------------------
+   3. SIDEBAR / NAVEGAÇÃO
+   ---------------------------------------------- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--largura-sidebar);
+  height: 100vh;
+  background-color: var(--fundo-sidebar);
+  border-right: 1px solid var(--borda-azul);
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--azul);
+  text-align: center;
+  letter-spacing: -1px;
+  user-select: none;
 }
 
 .menu {
-    display: flex;
-    flex-flow: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.menu > a {
-    color: #CBD5E1;
-    text-decoration: none;
-    transition: 0.3s ease;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 0.95em;
+.menu-link {
+  color: var(--texto-suave);
+  font-size: 0.9em;
+  padding: 10px 14px;
+  border-radius: var(--raio-sm);
+  transition: color var(--transicao), background-color var(--transicao), padding-left var(--transicao);
 }
 
-.menu > a:hover {
-    color: #3B82F6;
-    background-color: rgba(59, 130, 246, 0.08);
-    padding-left: 20px;
-}
-.container {
-    margin-left: 220px;
-    padding: 60px 80px;
-    max-width: 1200px;
+.menu-link:hover,
+.menu-link.ativo {
+  color: var(--azul-claro);
+  background-color: var(--azul-sutil);
+  padding-left: 20px;
 }
 
+/* O botão hambúrguer é ocultado no desktop */
+.hamburger-btn {
+  display: none;
+}
+
+/* Overlay do menu mobile */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(2, 6, 23, 0.75);
+  z-index: 90;
+}
+
+.menu-overlay.visivel {
+  display: block;
+}
+
+
+/* ----------------------------------------------
+   4. LAYOUT PRINCIPAL
+   ---------------------------------------------- */
+.pagina {
+  margin-left: var(--largura-sidebar);
+  padding: 0 80px;
+  max-width: 1100px;
+}
+
+/* Título padrão de seção */
+.titulo-secao {
+  font-size: 1.75em;
+  font-weight: 700;
+  margin-bottom: 36px;
+  position: relative;
+  display: inline-block;
+}
+
+.titulo-secao::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: var(--azul);
+  border-radius: 2px;
+}
+
+/* Separador visual entre seções */
+.sobre,
+.habilidades,
+.projetos,
+.contato {
+  padding-top: var(--espaco-secao);
+  border-top: 1px solid var(--borda-azul);
+  margin-top: var(--espaco-secao);
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: var(--raio-md);
+  font-family: var(--fonte);
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: background-color var(--transicao), color var(--transicao),
+              transform var(--transicao), box-shadow var(--transicao);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-cheio {
+  background-color: var(--azul);
+  color: #fff;
+}
+
+.btn-cheio:hover {
+  background-color: var(--azul-claro);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+}
+
+.btn-vazio {
+  background-color: transparent;
+  color: var(--azul-claro);
+  border-color: var(--azul);
+}
+
+.btn-vazio:hover {
+  background-color: var(--azul-sutil);
+}
+
+
+/* ----------------------------------------------
+   5. HERO
+   ---------------------------------------------- */
 .hero {
-   min-height: 100vh;
-   border:2px dotted black;
-   padding: 60px 0;
-   
-   display: flex;
-   flex-flow: row;
-   align-items: center;
-   justify-content: space-between;
-   gap: 60px;
-}
-.hero-text {
-    max-width: 580px;
-    flex: 1;
-}
-.hero-text h1{
-    color: #F8FAFC;
-    font-size: 2.8em;
-    font-weight: 700;
-    line-height: 1.15;
-    margin-top: 8px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 60px 0;
 }
 
-.hero-text > span {
-    font-size: 1.1em;
-    color: #CBD5E1;
-    letter-spacing: 0.05em;
-}
-.hero-text > h1 {
-    font-size: 3em;
-    line-height:1.1;
-    max-width: 700px;
-    margin-top: 0px;
-    padding-top: 0px;
-}
-.hero-text > h2 {
-    color: #3B82F6;
-    font-size: 1.4em;
-    font-weight: 500;
-    margin: 16px 0;
-}
-.hero-text > p {
-    color: #CBD5E1;
-    line-height: 1.8;
-    font-size: 1em;
-}
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 32px;
-}
-button {
-    background-color: #2563EB;
-    color: white;
-    border: none;
-    padding: 13px 28px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95em;
-    font-weight: 500;
-    transition: 0.3s;
-}
-button:hover {
-    background-color: #3B82F6;
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
-}
-button:active {
-    transform: translateY(-1px);
-}
-.outline {
-    background: transparent;
-    border: 1.5px solid #2563EB;
-    color: #3B82F6;
-}
-.outline:hover {
-    background: rgba(37, 99, 235, 0.1);
-}
-.hero-image {
-    flex-shrink: 0;
-}
-.hero-image > img{
-    width: 380px;
-    height: 380px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.12);
-    display: block;
-    border: 4px solid #2563EB;
-}
-.skills {
-    margin-top: 100px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(29, 78, 216, 0.4);;
-}
-.skills h2 {
-    margin-bottom: 32px;
-    color: #CBD5E1;
-    font-size: 1.8em;
+.hero-saudacao {
+  font-size: 1em;
+  color: var(--texto-suave);
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
 }
 
-.skills-area{
-    color: #CBD5E1;
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-.skills-card {
-    background: #0F172A;
-    color: #CBD5E1;;
-    padding: 20px 32px;
-    border-radius: 12px;
-    border: 1px solid #1D4ED8;
-    transition: 0.3s;
-    font-weight: 500;
-    cursor: default;
-}
-.skills-card:hover {
-    transform: translateY(-5px);
-    border-color: #3B82F6;;
-    color: #3B82F6;;
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
+.hero-texto h1 {
+  font-size: 2.8em;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 14px;
 }
 
-.projetos {
-    margin-top: 100px;
-     padding-top: 40px;
-    border-top: 1px solid rgba(29, 78, 216, 0.4);
-}
-.projetos > h2 {
-    color: white;
-    font-size: 1.8em;
-    margin-bottom: 8px;
-}
-.tabs {
-    display: flex;
-    gap: 12px;
-    margin: 28px 0px;
-    flex-wrap: wrap;
-}
-.tab {
-    background: transparent;
-    color: #CBD5E1;
-    border: 1px solid rgba(29, 78, 216, 0.4);
-    padding: 10px 22px;
-    font-size: 0.9em;
-}
-.tab:hover,
-.tab.active {
-    background: var(--blue-primary);
-    color: white;
-    border-color: var(--blue-primary);
-    transform: translateY(-2px);
+.hero-cargo {
+  font-size: 1.3em;
+  font-weight: 500;
+  color: var(--azul-claro);
+  margin-bottom: 18px;
 }
 
-.conteudo{
-    display: none;
-    background: #0F172A;
-    padding: 32px;
-    border-radius: 12px;
-    border: 1px solid rgba(29, 78, 216, 0.4);
-    animation: fadeIn 0.3s ease;
+.hero-descricao {
+  color: var(--texto-suave);
+  font-size: 0.95em;
+  max-width: 460px;
+  line-height: 1.8;
+  margin-bottom: 36px;
 }
-.conteudo.active {
-    display: block;
+
+.hero-acoes {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 }
-.conteudo h3 {
-    color: var(--text-main);
-    font-size: 1.3em;
-    margin-bottom: 12px;
+
+.hero-foto {
+  flex-shrink: 0;
 }
-.conteudo p {
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    line-height: 1.7;
+
+.hero-foto img {
+  width: 340px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--azul);
+  box-shadow: 0 0 0 10px rgba(37, 99, 235, 0.1);
 }
-.conteudo h4 {
-    color: var(--text-muted);
-    font-size: 0.85em;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 12px;
+
+
+/* ----------------------------------------------
+   6. SOBRE
+   ---------------------------------------------- */
+.sobre p {
+  color: var(--texto-suave);
+  font-size: 0.95em;
+  max-width: 640px;
+  line-height: 1.85;
+  margin-bottom: 16px;
 }
-.tech-tags {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
+
+.sobre p:last-child {
+  margin-bottom: 0;
 }
-.tech-tags button {
-    background: rgba(37, 99, 235, 0.15);
-    color: var(--blue-light);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    padding: 6px 16px;
-    font-size: 0.82em;
-    border-radius: 20px;
+
+
+/* ----------------------------------------------
+   7. HABILIDADES
+   ---------------------------------------------- */
+
+/* Abas */
+.abas-habilidades {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
 }
-.tech-tags button:hover {
-    background: var(--blue-primary);
-    color: white;
+
+.aba-btn {
+  background-color: transparent;
+  color: var(--texto-suave);
+  font-family: var(--fonte);
+  font-size: 0.88em;
+  font-weight: 500;
+  padding: 8px 20px;
+  border: 1px solid var(--borda-azul);
+  border-radius: var(--raio-sm);
+  cursor: pointer;
+  transition: background-color var(--transicao), color var(--transicao),
+              border-color var(--transicao), transform var(--transicao);
+}
+
+.aba-btn:hover {
+  border-color: var(--azul-claro);
+  color: var(--texto);
+  transform: translateY(-1px);
+}
+
+.aba-btn.ativa {
+  background-color: var(--azul);
+  color: #fff;
+  border-color: var(--azul);
+}
+
+/* Painéis */
+.painel-habilidades {
+  display: none;
+}
+
+.painel-habilidades.ativo {
+  display: block;
+  animation: surgir 0.3s ease;
+}
+
+/* Cards de habilidade com barra */
+.lista-habilidades {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.card-habilidade {
+  background-color: var(--fundo-card);
+  padding: 20px 22px;
+  border-radius: var(--raio-md);
+  border: 1px solid var(--borda-azul);
+  transition: border-color var(--transicao), transform var(--transicao);
+}
+
+.card-habilidade:hover {
+  border-color: var(--azul-claro);
+  transform: translateY(-3px);
+}
+
+.habilidade-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.habilidade-nome {
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.habilidade-nivel {
+  font-size: 0.75em;
+  color: var(--texto-suave);
+}
+
+.barra-progresso {
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.barra-preenchimento {
+  height: 100%;
+  width: 0; /* Animado via JS */
+  background: linear-gradient(to right, var(--azul), var(--azul-claro));
+  border-radius: 3px;
+  transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tags de soft skills */
+.lista-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  background-color: var(--fundo-card);
+  color: var(--texto-suave);
+  border: 1px solid var(--borda-azul);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 0.88em;
+  transition: color var(--transicao), border-color var(--transicao);
+}
+
+.tag:hover {
+  color: var(--azul-claro);
+  border-color: var(--azul-claro);
+}
+
+
+/* ----------------------------------------------
+   8. PROJETOS
+   ---------------------------------------------- */
+.abas-projetos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+/* Reutiliza .aba-btn da seção de habilidades */
+
+.painel-projeto {
+  display: none;
+  background-color: var(--fundo-card);
+  border: 1px solid var(--borda-azul);
+  border-radius: var(--raio-md);
+  padding: 32px;
+}
+
+.painel-projeto.ativo {
+  display: block;
+  animation: surgir 0.3s ease;
+}
+
+.painel-projeto h3 {
+  font-size: 1.25em;
+  margin-bottom: 12px;
+}
+
+.painel-projeto > p {
+  color: var(--texto-suave);
+  font-size: 0.93em;
+  line-height: 1.75;
+  max-width: 600px;
+  margin-bottom: 24px;
+}
+
+.projeto-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.projeto-tecnologias {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tecnologia-tag {
+  background-color: var(--azul-sutil);
+  color: var(--azul-claro);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.link-projeto {
+  color: var(--azul-claro);
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: letter-spacing var(--transicao), color var(--transicao);
+}
+
+.link-projeto:hover {
+  color: var(--texto);
+  letter-spacing: 0.03em;
+}
+
+
+/* ----------------------------------------------
+   9. CONTATO
+   ---------------------------------------------- */
+.contato {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 80px;
+}
+
+.contato-chamada h2 {
+  font-size: 1.6em;
+  margin-bottom: 14px;
+}
+
+.contato-chamada p {
+  color: var(--texto-suave);
+  font-size: 0.93em;
+  max-width: 380px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.contato-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.contato-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--texto-suave);
+  font-size: 0.92em;
+  transition: color var(--transicao), gap var(--transicao);
+}
+
+.contato-item:hover {
+  color: var(--azul-claro);
+  gap: 14px;
+}
+
+.rodape-copyright {
+  width: 100%;
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 0.8em;
+  opacity: 0.5;
+  padding-top: 40px;
+}
+
+
+/* ----------------------------------------------
+   10. UTILITÁRIOS E ANIMAÇÕES
+   ---------------------------------------------- */
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Entrada de seções via IntersectionObserver */
+.animar-entrada {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.animar-entrada.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respeita preferência por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .animar-entrada {
+    transition: none;
+    opacity: 1;
     transform: none;
-    box-shadow: none;
-}
- 
-.conteudo a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--blue-light);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95em;
-    transition: var(--transition);
-}
- 
-.conteudo a:hover {
-    color: var(--text-main);
-    gap: 10px;
-}
- 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.contact {
-    margin-top: 100px;
-    padding: 60px 0 80px;
-    border-top: 1px solid rgba(29, 78, 216, 0.4);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 60px;
-    justify-content: space-between;
-    align-items: flex-start;
-}
- 
-.contact > div > h3 {
-    color: var(--text-main);
-    font-size: 1.6em;
-    margin-bottom: 12px;
-}
- 
-.contact > div > p {
-    color: #CBD5E1;
-    max-width: 380px;
-    line-height: 1.7;
-    margin-bottom: 28px;
-}
- 
-.contact > div > button a {
-    color: white;
-    text-decoration: none;
-}
- 
-div.contato {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-top: 8px;
-}
- 
-div.contato > p > a {
-    color: #CBD5E1;
-    text-decoration: none;
-    transition: 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95em;
-}
- 
-div.contato > p > a:hover {
-    color: #3B82F6;
-    padding-left: 4px;
+  }
+  .barra-preenchimento {
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

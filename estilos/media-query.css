@@ -1,303 +1,273 @@
-@charset "UTF-8";
+/* ==============================================
+   media-query.css — Responsividade
+   Breakpoints:
+     — Tablet:      max-width: 1024px
+     — Mobile L:    max-width: 768px
+     — Mobile S:    max-width: 480px
+   ============================================== */
 
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+
+/* ----------------------------------------------
+   TABLET (até 1024px)
+   A sidebar vira uma barra de topo.
+   O menu ainda aparece em linha.
+   ---------------------------------------------- */
+@media (max-width: 1024px) {
+
+  /* A sidebar deixa de ser lateral e passa a ser fixa no topo */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    border-right: none;
+    border-bottom: 1px solid var(--borda-azul);
+    gap: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-size: 1.7em;
+  }
+
+  /* Menu em linha no tablet */
+  .menu {
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  .menu-link {
+    padding: 8px 12px;
+    font-size: 0.85em;
+  }
+
+  .menu-link:hover,
+  .menu-link.ativo {
+    padding-left: 12px; /* reseta o deslocamento lateral que fazia sentido só na sidebar */
+  }
+
+  /* O conteúdo deixa de ter margem lateral da sidebar */
+  .pagina {
+    margin-left: 0;
+    padding: 0 40px;
+  }
+
+  /* Hero centralizado quando a tela é menor */
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    min-height: auto;
+    padding: 60px 0 40px;
+    gap: 40px;
+  }
+
+  .hero-descricao {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-acoes {
+    justify-content: center;
+  }
+
+  .hero-foto img {
+    width: 240px;
+    height: 240px;
+  }
+
+  /* Sobre */
+  .sobre p {
+    max-width: 100%;
+  }
+
+  /* Contato empilha verticalmente */
+  .contato {
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 
 
-@media (max-width: 992px) {
+/* ----------------------------------------------
+   MOBILE L (até 768px)
+   O menu de navegação some e aparece o hambúrguer.
+   ---------------------------------------------- */
+@media (max-width: 768px) {
 
-    aside.sidebar {
-        width: 100%;
-        height: auto;
-        position: sticky;
-        top: 0;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 16px 24px;
-        border-right: none;
-        border-bottom: 1px solid rgba(29, 78, 216, 0.4);
-        z-index: 200;
-    }
+  .sidebar {
+    padding: 12px 20px;
+  }
 
-    .logo {
-        font-size: 1.8em;
-    }
+  /* Esconde o menu em linha */
+  .menu {
+    display: none;
+    position: fixed;
+    top: 53px; /* altura da sidebar no mobile */
+    left: 0;
+    right: 0;
+    background-color: var(--fundo-sidebar);
+    border-bottom: 1px solid var(--borda-azul);
+    flex-direction: column;
+    padding: 16px 20px 24px;
+    gap: 4px;
+    z-index: 95;
+    animation: surgir 0.2s ease;
+  }
 
-    .menu {
-        flex-direction: row;
-        gap: 4px;
-    }
+  /* Classe adicionada via JS quando o menu está aberto */
+  .menu.aberto {
+    display: flex;
+  }
 
-    .menu > a {
-        padding: 8px 12px;
-        font-size: 0.85em;
-    }
+  .menu-link {
+    font-size: 0.95em;
+    padding: 12px 16px;
+  }
 
-    .menu > a:hover {
-        padding-left: 12px; 
-    }
+  /* Mostra o botão hambúrguer */
+  .hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+    background: transparent;
+    border: 1px solid var(--borda-azul);
+    border-radius: var(--raio-sm);
+    cursor: pointer;
+    transition: border-color var(--transicao);
+    z-index: 110;
+  }
 
+  .hamburger-btn:hover {
+    border-color: var(--azul-claro);
+  }
 
-    .container {
-        margin-left: 0;
-        padding: 48px 32px;
-    }
+  /* As três linhas do hambúrguer */
+  .hamburger-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--azul-claro);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
 
-    .hero {
-        flex-direction: column-reverse;
-        align-items: center;
-        text-align: center;
-        min-height: auto;
-        padding: 48px 0 32px;
-        gap: 40px;
-    }
+  /* Transforma as linhas em X quando o menu está aberto */
+  .hamburger-btn.aberto span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
 
-    .hero-text {
-        max-width: 100%;
-    }
+  .hamburger-btn.aberto span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
 
-    .hero-text > h1 {
-        font-size: 2.2em;
-    }
+  .hamburger-btn.aberto span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 
-    .hero-text > p {
-        max-width: 520px;
-        margin: 0 auto;
-    }
+  /* Conteúdo */
+  .pagina {
+    padding: 0 24px;
+  }
 
-    .buttons {
-        justify-content: center;
-    }
+  .hero {
+    padding: 48px 0 32px;
+    gap: 32px;
+  }
 
-    .hero-image > img {
-        width: 200px;
-        height: 200px;
-    }
+  .hero-texto h1 {
+    font-size: 2.1em;
+  }
 
-    .skills-area {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-    }
+  .hero-cargo {
+    font-size: 1.1em;
+  }
 
-    .skills-card {
-        text-align: center;
-    }
+  .hero-foto img {
+    width: 180px;
+    height: 180px;
+  }
 
+  /* Botões empilham em mobile */
+  .hero-acoes {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .tabs {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
 
-    .tab {
-        flex: 1 1 auto;
-        text-align: center;
-        
-    }
+  /* Seções com menos margem */
+  .sobre,
+  .habilidades,
+  .projetos,
+  .contato {
+    margin-top: 72px;
+    padding-top: 56px;
+  }
 
+  .titulo-secao {
+    font-size: 1.5em;
+  }
 
-    .contact {
-        flex-direction: column;
-        gap: 32px;
-    }
+  /* Grid de habilidades vira 1 coluna */
+  .lista-habilidades {
+    grid-template-columns: 1fr;
+  }
+
+  /* Abas dos projetos empilham */
+  .abas-projetos {
+    flex-direction: column;
+  }
+
+  .abas-projetos .aba-btn {
+    width: 100%;
+    text-align: left;
+  }
+
+  .painel-projeto {
+    padding: 24px 20px;
+  }
 }
 
-@media (max-width: 600px) {
 
-    aside.sidebar {
-        padding: 14px 16px;
-    }
+/* ----------------------------------------------
+   MOBILE S (até 480px)
+   Ajustes finos para telas bem pequenas.
+   ---------------------------------------------- */
+@media (max-width: 480px) {
 
-    .logo {
-        font-size: 1.5em;
-    }
+  .pagina {
+    padding: 0 16px;
+  }
 
-    .menu {
-        display: none;
-    }
+  .hero-texto h1 {
+    font-size: 1.75em;
+  }
 
-    .menu-toggle {
-        display: flex;
-        align-items: center;
-        background: transparent;
-        border: 1px solid rgba(59, 130, 246, 0.4);
-        color: #3B82F6;
-        font-size: 1.2em;
-        padding: 6px 12px;
-        border-radius: 8px;
-        cursor: pointer;
-    }
+  .hero-foto img {
+    width: 150px;
+    height: 150px;
+  }
 
-    .menu.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 56px;
-        left: 0;
-        right: 0;
-        background: #071026;
-        border-bottom: 1px solid rgba(29, 78, 216, 0.4);
-        padding: 12px 16px 20px;
-        gap: 4px;
-        z-index: 300;
-    }
+  .contato-chamada h2 {
+    font-size: 1.35em;
+  }
 
-    .menu.open > a {
-        font-size: 1em;
-        padding: 12px 16px;
-    }
-
-    .container {
-        padding: 32px 16px;
-    }
-
-
-    .hero {
-        padding: 32px 0 24px;
-        gap: 28px;
-    }
-
-    .hero-text > span {
-        font-size: 0.9em;
-    }
-
-    .hero-text > h1 {
-        font-size: 1.75em;
-        line-height: 1.2;
-    }
-
-    .hero-text > h2 {
-        font-size: 1.1em;
-        margin: 10px 0;
-    }
-
-    .hero-text > p {
-        font-size: 0.9em;
-        line-height: 1.7;
-    }
-
-    .hero-image > img {
-        width: 160px;
-        height: 160px;
-        border-width: 3px;
-    }
-
-    .buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-
-    button {
-        width: 100%;
-        max-width: 280px;
-        padding: 14px 20px;
-        font-size: 0.95em;
-        border: 1.5px solid rgba(1, 16, 41, 0.527);
-    }
-
-    .skills-area {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .skills-card {
-        padding: 16px 12px;
-        text-align: center;
-        font-size: 0.9em;
-    }
-
-    .skills,
-    .projetos {
-        margin-top: 64px;
-        padding-top: 32px;
-    }
-
-    .skills h2,
-    .projetos > h2 {
-        font-size: 1.4em;
-    }
-
-    .tabs {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .tab {
-        width: 100%;
-        text-align: left;
-        padding: 12px 16px;
-    }
-
-
-    .conteudo {
-        padding: 20px 16px;
-    }
-
-    .conteudo h3 {
-        font-size: 1.1em;
-    }
-
-    .conteudo p {
-        font-size: 0.88em;
-    }
-
-    .contact {
-        margin-top: 64px;
-        padding: 40px 0 60px;
-        flex-direction: column;
-        gap: 28px;
-    }
-
-    .contact > div > h3 {
-        font-size: 1.3em;
-    }
-
-    .contact > div > p {
-        font-size: 0.88em;
-    }
-
-    div.contato {
-        gap: 10px;
-    }
-
-    div.contato > p > a {
-        font-size: 0.88em;
-    }
-}
-
-@media (max-width: 380px) {
-
-    .container {
-        padding: 24px 12px;
-    }
-
-    .hero-text > h1 {
-        font-size: 1.5em;
-    }
-
-    .hero-image > img {
-        width: 130px;
-        height: 130px;
-    }
-
-    .skills-area {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-    }
-
-    .skills-card {
-        padding: 12px 8px;
-        font-size: 0.82em;
-    }
-
-    button {
-        max-width: 100%;
-    }
+  .contato-item {
+    font-size: 0.85em;
+    word-break: break-all;
+  }
 }
