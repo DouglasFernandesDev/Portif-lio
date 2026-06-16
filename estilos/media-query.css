@@ -1,128 +1,273 @@
-@media(max-width:1024px){
+/* ==============================================
+   media-query.css — Responsividade
+   Breakpoints:
+     — Tablet:      max-width: 1024px
+     — Mobile L:    max-width: 768px
+     — Mobile S:    max-width: 480px
+   ============================================== */
 
-.sidebar{
 
-position:fixed;
-top:0;
-left:0;
+/* ----------------------------------------------
+   TABLET (até 1024px)
+   A sidebar vira uma barra de topo.
+   O menu ainda aparece em linha.
+   ---------------------------------------------- */
+@media (max-width: 1024px) {
 
-width:100%;
-height:auto;
+  /* A sidebar deixa de ser lateral e passa a ser fixa no topo */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    border-right: none;
+    border-bottom: 1px solid var(--borda-azul);
+    gap: 0;
+    z-index: 100;
+  }
 
-flex-direction:row;
+  .logo {
+    font-size: 1.7em;
+  }
 
-padding:14px 32px;
+  /* Menu em linha no tablet */
+  .menu {
+    flex-direction: row;
+    gap: 4px;
+  }
 
-border-right:none;
-border-bottom:1px solid var(--borda-azul);
+  .menu-link {
+    padding: 8px 12px;
+    font-size: 0.85em;
+  }
 
-z-index:100;
+  .menu-link:hover,
+  .menu-link.ativo {
+    padding-left: 12px; /* reseta o deslocamento lateral que fazia sentido só na sidebar */
+  }
 
+  /* O conteúdo deixa de ter margem lateral da sidebar */
+  .pagina {
+    margin-left: 0;
+    padding: 0 40px;
+  }
+
+  /* Hero centralizado quando a tela é menor */
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    min-height: auto;
+    padding: 60px 0 40px;
+    gap: 40px;
+  }
+
+  .hero-descricao {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-acoes {
+    justify-content: center;
+  }
+
+  .hero-foto img {
+    width: 240px;
+    height: 240px;
+  }
+
+  /* Sobre */
+  .sobre p {
+    max-width: 100%;
+  }
+
+  /* Contato empilha verticalmente */
+  .contato {
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 
 
-.pagina{
+/* ----------------------------------------------
+   MOBILE L (até 768px)
+   O menu de navegação some e aparece o hambúrguer.
+   ---------------------------------------------- */
+@media (max-width: 768px) {
 
-margin-left:0;
-padding:0 40px;
-width:100%;
-overflow:hidden;
+  .sidebar {
+    padding: 12px 20px;
+  }
 
+  /* Esconde o menu em linha */
+  .menu {
+    display: none;
+    position: fixed;
+    top: 53px; /* altura da sidebar no mobile */
+    left: 0;
+    right: 0;
+    background-color: var(--fundo-sidebar);
+    border-bottom: 1px solid var(--borda-azul);
+    flex-direction: column;
+    padding: 16px 20px 24px;
+    gap: 4px;
+    z-index: 95;
+    animation: surgir 0.2s ease;
+  }
+
+  /* Classe adicionada via JS quando o menu está aberto */
+  .menu.aberto {
+    display: flex;
+  }
+
+  .menu-link {
+    font-size: 0.95em;
+    padding: 12px 16px;
+  }
+
+  /* Mostra o botão hambúrguer */
+  .hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+    background: transparent;
+    border: 1px solid var(--borda-azul);
+    border-radius: var(--raio-sm);
+    cursor: pointer;
+    transition: border-color var(--transicao);
+    z-index: 110;
+  }
+
+  .hamburger-btn:hover {
+    border-color: var(--azul-claro);
+  }
+
+  /* As três linhas do hambúrguer */
+  .hamburger-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--azul-claro);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Transforma as linhas em X quando o menu está aberto */
+  .hamburger-btn.aberto span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger-btn.aberto span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .hamburger-btn.aberto span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Conteúdo */
+  .pagina {
+    padding: 0 24px;
+  }
+
+  .hero {
+    padding: 48px 0 32px;
+    gap: 32px;
+  }
+
+  .hero-texto h1 {
+    font-size: 2.1em;
+  }
+
+  .hero-cargo {
+    font-size: 1.1em;
+  }
+
+  .hero-foto img {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* Botões empilham em mobile */
+  .hero-acoes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  /* Seções com menos margem */
+  .sobre,
+  .habilidades,
+  .projetos,
+  .contato {
+    margin-top: 72px;
+    padding-top: 56px;
+  }
+
+  .titulo-secao {
+    font-size: 1.5em;
+  }
+
+  /* Grid de habilidades vira 1 coluna */
+  .lista-habilidades {
+    grid-template-columns: 1fr;
+  }
+
+  /* Abas dos projetos empilham */
+  .abas-projetos {
+    flex-direction: column;
+  }
+
+  .abas-projetos .aba-btn {
+    width: 100%;
+    text-align: left;
+  }
+
+  .painel-projeto {
+    padding: 24px 20px;
+  }
 }
 
 
-.hero{
+/* ----------------------------------------------
+   MOBILE S (até 480px)
+   Ajustes finos para telas bem pequenas.
+   ---------------------------------------------- */
+@media (max-width: 480px) {
 
-flex-direction:column-reverse;
+  .pagina {
+    padding: 0 16px;
+  }
 
-text-align:center;
+  .hero-texto h1 {
+    font-size: 1.75em;
+  }
 
-}
+  .hero-foto img {
+    width: 150px;
+    height: 150px;
+  }
 
+  .contato-chamada h2 {
+    font-size: 1.35em;
+  }
 
-.hero-foto img{
-
-width:240px;
-height:240px;
-
-object-position:center;
-
-}
-
-}
-
-
-
-@media(max-width:768px){
-
-
-.menu{
-
-z-index:150;
-
-}
-
-
-.menu-overlay{
-
-z-index:140;
-
-}
-
-
-.hamburger-btn{
-
-display:flex;
-
-flex-shrink:0;
-
-}
-
-
-
-.pagina{
-
-padding:0 20px;
-
-}
-
-
-.hero-foto img{
-
-width:180px;
-height:180px;
-
-object-position:center;
-
-}
-
-
-}
-
-
-
-@media(max-width:480px){
-
-
-.pagina{
-
-padding:0 16px;
-
-}
-
-
-.hero-texto h1{
-
-font-size:1.75rem;
-
-}
-
-
-.hero-foto img{
-
-width:150px;
-height:150px;
-
-}
-
+  .contato-item {
+    font-size: 0.85em;
+    word-break: break-all;
+  }
 }
