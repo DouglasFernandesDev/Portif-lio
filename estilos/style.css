@@ -15,10 +15,6 @@
     10. Utilitários e animações
    ============================================== */
 
-
-/* ----------------------------------------------
-   1. VARIÁVEIS
-   ---------------------------------------------- */
 :root {
   /* Cores principais */
   --azul:         #2563EB;
@@ -53,9 +49,7 @@
 }
 
 
-/* ----------------------------------------------
-   2. RESET E BASE
-   ---------------------------------------------- */
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -63,7 +57,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  
+  
   font-size: 16px;
 }
 
@@ -89,7 +84,7 @@ img {
   max-width: 100%;
 }
 
-/* Foco visível para navegação por teclado */
+
 :focus-visible {
   outline: 2px solid var(--azul-claro);
   outline-offset: 3px;
@@ -97,9 +92,7 @@ img {
 }
 
 
-/* ----------------------------------------------
-   3. SIDEBAR / NAVEGAÇÃO
-   ---------------------------------------------- */
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -145,12 +138,12 @@ img {
   padding-left: 20px;
 }
 
-/* O botão hambúrguer é ocultado no desktop */
+
 .hamburger-btn {
   display: none;
 }
 
-/* Overlay do menu mobile */
+
 .menu-overlay {
   display: none;
   position: fixed;
@@ -164,16 +157,14 @@ img {
 }
 
 
-/* ----------------------------------------------
-   4. LAYOUT PRINCIPAL
-   ---------------------------------------------- */
+
 .pagina {
   margin-left: var(--largura-sidebar);
   padding: 0 80px;
   max-width: 1100px;
 }
 
-/* Título padrão de seção */
+
 .titulo-secao {
   font-size: 1.75em;
   font-weight: 700;
@@ -193,7 +184,7 @@ img {
   border-radius: 2px;
 }
 
-/* Separador visual entre seções */
+
 .sobre,
 .habilidades,
 .projetos,
@@ -203,7 +194,7 @@ img {
   margin-top: var(--espaco-secao);
 }
 
-/* Botões */
+
 .btn {
   display: inline-block;
   padding: 12px 26px;
@@ -242,9 +233,6 @@ img {
 }
 
 
-/* ----------------------------------------------
-   5. HERO
-   ---------------------------------------------- */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -303,9 +291,7 @@ img {
 }
 
 
-/* ----------------------------------------------
-   6. SOBRE
-   ---------------------------------------------- */
+
 .sobre p {
   color: var(--texto-suave);
   font-size: 0.95em;
@@ -319,11 +305,7 @@ img {
 }
 
 
-/* ----------------------------------------------
-   7. HABILIDADES
-   ---------------------------------------------- */
 
-/* Abas */
 .abas-habilidades {
   display: flex;
   gap: 10px;
@@ -357,7 +339,7 @@ img {
   border-color: var(--azul);
 }
 
-/* Painéis */
+
 .painel-habilidades {
   display: none;
 }
@@ -367,7 +349,7 @@ img {
   animation: surgir 0.3s ease;
 }
 
-/* Cards de habilidade com barra */
+
 .lista-habilidades {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -413,13 +395,13 @@ img {
 
 .barra-preenchimento {
   height: 100%;
-  width: 0; /* Animado via JS */
+  width: 0; 
   background: linear-gradient(to right, var(--azul), var(--azul-claro));
   border-radius: 3px;
   transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Tags de soft skills */
+
 .lista-tags {
   display: flex;
   flex-wrap: wrap;
@@ -442,9 +424,7 @@ img {
 }
 
 
-/* ----------------------------------------------
-   8. PROJETOS
-   ---------------------------------------------- */
+
 .abas-projetos {
   display: flex;
   gap: 10px;
@@ -452,7 +432,7 @@ img {
   margin-bottom: 28px;
 }
 
-/* Reutiliza .aba-btn da seção de habilidades */
+
 
 .painel-projeto {
   display: none;
@@ -516,9 +496,7 @@ img {
 }
 
 
-/* ----------------------------------------------
-   9. CONTATO
-   ---------------------------------------------- */
+
 .contato {
   display: flex;
   flex-wrap: wrap;
@@ -572,9 +550,7 @@ img {
 }
 
 
-/* ----------------------------------------------
-   10. UTILITÁRIOS E ANIMAÇÕES
-   ---------------------------------------------- */
+
 @keyframes surgir {
   from {
     opacity: 0;
@@ -586,7 +562,7 @@ img {
   }
 }
 
-/* Entrada de seções via IntersectionObserver */
+
 .animar-entrada {
   opacity: 0;
   transform: translateY(20px);
@@ -598,7 +574,7 @@ img {
   transform: translateY(0);
 }
 
-/* Respeita preferência por menos movimento */
+
 @media (prefers-reduced-motion: reduce) {
   .animar-entrada {
     transition: none;
