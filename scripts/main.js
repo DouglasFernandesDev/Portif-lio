@@ -9,9 +9,6 @@
 //   6. Preenche o ano no rodapé automaticamente
 
 
-// -----------------------------------------------
-// 1. MENU HAMBÚRGUER
-// -----------------------------------------------
 
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const menu         = document.getElementById('menu');
