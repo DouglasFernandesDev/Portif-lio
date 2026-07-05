@@ -22,7 +22,7 @@ function abrirMenu() {
   hamburgerBtn.classList.add('aberto');
   overlay.classList.add('visivel');
   hamburgerBtn.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden'; // evita scroll enquanto o menu está aberto
+  document.body.style.overflow = 'hidden'; 
 }
 
 function fecharMenu() {
@@ -38,23 +38,18 @@ hamburgerBtn.addEventListener('click', () => {
   estaAberto ? fecharMenu() : abrirMenu();
 });
 
-// Fechar ao clicar no overlay escuro
+
 overlay.addEventListener('click', fecharMenu);
 
-// Fechar ao clicar em qualquer link do menu
+
 menu.querySelectorAll('.menu-link').forEach(link => {
   link.addEventListener('click', fecharMenu);
 });
 
-// Fechar com a tecla Escape
+
 document.addEventListener('keydown', evento => {
   if (evento.key === 'Escape') fecharMenu();
 });
-
-
-// -----------------------------------------------
-// 2. SCROLL SPY — destaca o link da seção atual
-// -----------------------------------------------
 
 const secoes   = document.querySelectorAll('section[id], footer[id]');
 const menuLinks = document.querySelectorAll('.menu-link');
@@ -63,7 +58,7 @@ const observadorSecao = new IntersectionObserver(entradas => {
   entradas.forEach(entrada => {
     if (!entrada.isIntersecting) return;
 
-    // Remove ativo de todos os links e coloca no correspondente
+    
     menuLinks.forEach(link => link.classList.remove('ativo'));
 
     const linkAtivo = document.querySelector(`.menu-link[href="#${entrada.target.id}"]`);
@@ -76,9 +71,7 @@ const observadorSecao = new IntersectionObserver(entradas => {
 secoes.forEach(secao => observadorSecao.observe(secao));
 
 
-// -----------------------------------------------
-// 3. ABAS DOS PROJETOS
-// -----------------------------------------------
+
 
 function iniciarAbas(seletorAbas, seletorPaineis) {
   const botoes  = document.querySelectorAll(seletorAbas);
@@ -88,7 +81,7 @@ function iniciarAbas(seletorAbas, seletorPaineis) {
     botao.addEventListener('click', () => {
       const alvo = botao.dataset.alvo;
 
-      // Atualiza os botões
+      
       botoes.forEach(b => {
         b.classList.remove('ativa');
         b.setAttribute('aria-selected', 'false');
@@ -96,7 +89,7 @@ function iniciarAbas(seletorAbas, seletorPaineis) {
       botao.classList.add('ativa');
       botao.setAttribute('aria-selected', 'true');
 
-      // Mostra o painel correspondente e esconde os outros
+      
       paineis.forEach(painel => {
         const esteEOAlvo = painel.id === `painel-${alvo}`;
         painel.classList.toggle('ativo', esteEOAlvo);
@@ -114,18 +107,16 @@ function iniciarAbas(seletorAbas, seletorPaineis) {
 iniciarAbas('.abas-projetos .aba-btn', '.painel-projeto');
 
 
-// -----------------------------------------------
-// 4. ABAS DE HABILIDADES + ANIMAÇÃO DAS BARRAS
-// -----------------------------------------------
+
 
 function animarBarras(painel) {
   painel.querySelectorAll('.barra-preenchimento').forEach(barra => {
     const largura = barra.dataset.largura + '%';
 
-    // Reseta antes de animar (para reativar a transição)
+  
     barra.style.width = '0';
 
-    // Precisa de dois frames para garantir que o reset foi aplicado
+    
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         barra.style.width = largura;
@@ -162,19 +153,16 @@ botoesHabilidades.forEach(botao => {
   });
 });
 
-// Anima as barras do painel inicial quando a página carrega
+
 const painelInicial = document.querySelector('.painel-habilidades.ativo');
 if (painelInicial) {
-  // Pequeno delay para garantir que o CSS já foi processado
+  
   setTimeout(() => animarBarras(painelInicial), 400);
 }
 
 
-// -----------------------------------------------
-// 5. ANIMAÇÃO DE ENTRADA DAS SEÇÕES
-// -----------------------------------------------
 
-// Adiciona a classe de animação nas seções principais
+
 const elementosParaAnimar = document.querySelectorAll(
   '.hero-texto, .hero-foto, .sobre, .habilidades, .projetos, .contato'
 );
@@ -185,7 +173,7 @@ const observadorEntrada = new IntersectionObserver(entradas => {
   entradas.forEach(entrada => {
     if (entrada.isIntersecting) {
       entrada.target.classList.add('visivel');
-      observadorEntrada.unobserve(entrada.target); // anima só uma vez
+      observadorEntrada.unobserve(entrada.target);
     }
   });
 }, {
@@ -195,9 +183,6 @@ const observadorEntrada = new IntersectionObserver(entradas => {
 elementosParaAnimar.forEach(el => observadorEntrada.observe(el));
 
 
-// -----------------------------------------------
-// 6. ANO DINÂMICO NO RODAPÉ
-// -----------------------------------------------
 
 const campoAno = document.getElementById('ano-atual');
 if (campoAno) {
