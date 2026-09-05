@@ -3,28 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Douglas Fernandes — Desenvolvedor Front-end</title>
-<meta name="description" content="Portfólio de Douglas Fernandes, desenvolvedor front-end especializado em HTML, CSS e JavaScript.">
+<title>Douglas Fernandes — Desenvolvedor Front-end em Iguaba Grande - RJ</title>
+<meta name="description" content="Desenvolvimento front-end para negócios locais em Iguaba Grande - RJ: landing pages e sites rápidos, com um caminho claro até o WhatsApp. HTML, CSS, JavaScript e fluxo de trabalho com IA (Claude Code).">
+<link rel="canonical" href="https://douglasfernandesdev.github.io/Portif-lio/">
+
+<!-- Open Graph / compartilhamento -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Douglas Fernandes — Desenvolvedor Front-end em Iguaba Grande - RJ">
+<meta property="og:description" content="Sites que transformam visita em cliente. Landing pages para negócios locais em Iguaba Grande - RJ.">
+<meta property="og:image" content="https://douglasfernandesdev.github.io/Portif-lio/imagem/og-image.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://douglasfernandesdev.github.io/Portif-lio/imagem/og-image.jpg">
+
+<link rel="icon" href="imagem/favicon.svg" type="image/svg+xml">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="estilo.css">
 <link rel="stylesheet" href="responsivo.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Douglas Fernandes",
+  "jobTitle": "Desenvolvedor Front-end",
+  "url": "https://douglasfernandesdev.github.io/Portif-lio/",
+  "address": { "@type": "PostalAddress", "addressLocality": "Iguaba Grande", "addressRegion": "RJ", "addressCountry": "BR" },
+  "sameAs": [
+    "https://github.com/DouglasFernandesDev",
+    "https://www.linkedin.com/in/douglas-fernandes-3a7736227",
+    "https://www.instagram.com/douglas_dev_web"
+  ]
+}
+</script>
 </head>
 <body>
 
-<!-- ancora real de topo: fica fora do cabeçalho fixo para o link "Início" funcionar -->
+<!-- sprite oculto com o padrão do calçadão, usado nas duas faixas-assinatura da página -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="padraoCalcadao" width="80" height="34" patternUnits="userSpaceOnUse">
+      <rect width="80" height="34" fill="var(--grafite)"/>
+      <path d="M0,17 C20,9 20,9 40,17 C60,25 60,25 80,17 L80,23 C60,31 60,31 40,23 C20,15 20,15 0,23 Z" fill="var(--papel)" opacity=".92"/>
+    </pattern>
+  </defs>
+</svg>
+
 <div id="topo"></div>
 
 <!-- ===== CABEÇALHO ===== -->
 <header class="cabecalho">
   <div class="cabecalho__interior">
-    <a href="#topo" class="logotipo" data-rolar-topo>&lt;/&gt; <span>douglas</span></a>
+    <a href="#topo" class="logotipo" data-rolar-topo>Douglas<span>.</span></a>
 
     <nav class="navegacao" id="navegacao">
       <a href="#topo" class="navegacao__link" data-rolar-topo>Início</a>
       <a href="#sobre" class="navegacao__link">Sobre</a>
       <a href="#habilidades" class="navegacao__link">Skills</a>
+      <a href="#processo" class="navegacao__link">Processo</a>
       <a href="#projetos" class="navegacao__link">Projetos</a>
       <a href="#contato" class="navegacao__link navegacao__link--destaque">Contato</a>
     </nav>
@@ -41,64 +80,54 @@
   <div class="capa__interior">
 
     <div class="capa__texto">
-      <p class="rotulo-secao">01 <span>// apresentação</span></p>
-      <div class="cartao-editor">
-        <div class="cartao-editor__barra">
-          <span class="ponto ponto--vermelho"></span>
-          <span class="ponto ponto--amarelo"></span>
-          <span class="ponto ponto--verde"></span>
-          <span class="cartao-editor__nome-arquivo">capa.js</span>
-        </div>
-        <div class="cartao-editor__corpo">
-          <p><span class="codigo-palavra">const</span> <span class="codigo-variavel">douglas</span> = {</p>
-          <p class="recuo"><span class="codigo-chave">cargo</span>: <span class="codigo-texto">"Desenvolvedor Front-end"</span>,</p>
-          <p class="recuo"><span class="codigo-chave">cidade</span>: <span class="codigo-texto">"Rio de Janeiro"</span>,</p>
-          <p class="recuo"><span class="codigo-chave">stack</span>: [<span class="codigo-texto">"HTML"</span>, <span class="codigo-texto">"CSS"</span>, <span class="codigo-texto">"JavaScript"</span>],</p>
-          <p class="recuo"><span class="codigo-chave">missão</span>: <span class="digitado" id="digitado"></span><span class="cursor">|</span></p>
-          <p>};</p>
-        </div>
-      </div>
+      <span class="selo-status"><span class="selo-status__ponto" aria-hidden="true"></span> disponível pra novos projetos</span>
 
-      <h1 class="capa__titulo">Douglas Fernandes</h1>
-      <p class="capa__subtitulo">Transformo ideias em interfaces rápidas, bonitas e fáceis de usar.</p>
+      <h1 class="capa__titulo">Sites que transformam visita em <em>cliente</em></h1>
+      <p class="capa__subtitulo">Desenvolvimento front-end para negócios locais em Iguaba Grande - RJ — páginas rápidas, com identidade visual própria e um caminho claro até o WhatsApp.</p>
 
       <div class="capa__acoes">
-        <a href="#projetos" class="botao botao--primario">Ver projetos</a>
-        <a href="#contato" class="botao botao--secundario">Entrar em contato</a>
+        <a href="https://wa.me/5522998984135" target="_blank" rel="noopener noreferrer" class="botao botao--primario">Chamar no WhatsApp</a>
+        <a href="#projetos" class="botao botao--secundario">Ver projetos</a>
       </div>
+
+      <p class="capa__terminal"><span class="capa__prompt">&gt;</span><span class="digitado" id="digitado"></span><span class="cursor">_</span></p>
     </div>
 
-    <div class="capa__foto">
-      <div class="moldura-foto">
-        <img src="imagem/perfil.PNG" alt="Foto de Douglas Fernandes sorrindo" width="360" height="360">
-      </div>
-      <span class="selo-status">🟢 disponível pra novos projetos</span>
+    <div class="capa__rodape">
+      <span class="capa__foto">
+        <img src="imagem/perfil.jpg" alt="Foto de Douglas Fernandes" width="132" height="132">
+      </span>
+      <span class="capa__assinatura"><strong>Douglas Fernandes</strong><br>Iguaba Grande - RJ · remoto</span>
     </div>
 
+  </div>
+
+  <div class="calcadao" aria-hidden="true">
+    <svg width="100%" height="34" preserveAspectRatio="none"><rect width="100%" height="100%" fill="url(#padraoCalcadao)"/></svg>
   </div>
 </section>
 
 <!-- ===== SOBRE ===== -->
 <section class="secao" id="sobre">
-  <p class="rotulo-secao">02 <span>// sobre</span></p>
+  <p class="rotulo-secao">// sobre</p>
   <div class="sobre__grade">
     <div class="sobre__texto">
       <h2 class="titulo-secao">Sobre mim</h2>
-      <p>Sou o Douglas, desenvolvedor front-end no Rio de Janeiro. Comecei a estudar programação por conta própria — testando, quebrando e refazendo código até entender de verdade como as coisas funcionam. Isso mudou a forma como eu penso cada projeto: menos enfeite, mais solução que realmente funciona.</p>
-      <p>Quando alguém me chama pra criar um site, não entrego só uma tela bonita. Entrego algo que carrega rápido, funciona igual no celular e no computador, e foi pensado pra transformar visitante em cliente. Acompanho de perto cada etapa, ajusto o que for preciso e entrego o que foi combinado — sem enrolação.</p>
+      <p>Sou o Douglas, desenvolvedor front-end em Iguaba Grande, no litoral do Rio de Janeiro. Comecei a estudar programação por conta própria — testando, quebrando e refazendo código até entender de verdade como as coisas funcionam. Isso mudou a forma como penso cada projeto: menos enfeite, mais solução que resolve.</p>
+      <p>Quando alguém me chama pra criar um site, não entrego só uma tela bonita. Entrego algo que carrega rápido, funciona igual no celular e no computador, e foi pensado pra transformar visitante em cliente. Hoje também uso ferramentas de IA como o Claude Code no meu fluxo — pra prototipar mais rápido e revisar código — mas cada linha que sai no ar passa por mim antes de ir pro ar.</p>
     </div>
     <div class="sobre__estatisticas">
       <div class="cartao-estatistica">
-        <span class="cartao-estatistica__numero">HTML · CSS · JS</span>
-        <span class="cartao-estatistica__legenda">Base sólida em front-end</span>
+        <span class="cartao-estatistica__numero">3 sites no ar</span>
+        <span class="cartao-estatistica__legenda">Para negócios reais</span>
       </div>
       <div class="cartao-estatistica">
-        <span class="cartao-estatistica__numero">Git &amp; GitHub</span>
-        <span class="cartao-estatistica__legenda">Versionamento dos projetos</span>
+        <span class="cartao-estatistica__numero">100% responsivo</span>
+        <span class="cartao-estatistica__legenda">Mobile, tablet e desktop</span>
       </div>
       <div class="cartao-estatistica">
-        <span class="cartao-estatistica__numero">Rio de Janeiro</span>
-        <span class="cartao-estatistica__legenda">Disponível remoto</span>
+        <span class="cartao-estatistica__numero">Iguaba Grande - RJ</span>
+        <span class="cartao-estatistica__legenda">Presencial ou remoto</span>
       </div>
     </div>
   </div>
@@ -106,181 +135,262 @@
 
 <!-- ===== HABILIDADES ===== -->
 <section class="secao secao--alternativa" id="habilidades">
-  <p class="rotulo-secao">03 <span>// habilidades</span></p>
-  <h2 class="titulo-secao">O que eu uso no dia a dia</h2>
+  <p class="rotulo-secao">// o que eu entrego</p>
+  <h2 class="titulo-secao">Como eu trabalho</h2>
 
   <div class="competencias">
     <div class="competencias__grupo">
       <h3 class="competencias__titulo">Front-end</h3>
       <div class="etiquetas">
-        <span class="etiqueta">HTML5 <span class="etiqueta__nivel">Avançado</span></span>
-        <span class="etiqueta">CSS3 <span class="etiqueta__nivel">Avançado</span></span>
-        <span class="etiqueta">JavaScript <span class="etiqueta__nivel">Intermediário</span></span>
+        <span class="etiqueta">HTML5</span>
+        <span class="etiqueta">CSS3</span>
+        <span class="etiqueta">JavaScript</span>
+        <span class="etiqueta">Design responsivo</span>
       </div>
     </div>
     <div class="competencias__grupo">
-      <h3 class="competencias__titulo">Ferramentas</h3>
+      <h3 class="competencias__titulo">Ferramentas &amp; fluxo</h3>
       <div class="etiquetas">
-        <span class="etiqueta">VS Code <span class="etiqueta__nivel">Avançado</span></span>
-        <span class="etiqueta">npm / Vite <span class="etiqueta__nivel">Intermediário</span></span>
-        <span class="etiqueta">Git <span class="etiqueta__nivel">Intermediário</span></span>
+        <span class="etiqueta">Git &amp; GitHub</span>
+        <span class="etiqueta">VS Code</span>
+        <span class="etiqueta">npm / Vite</span>
+        <span class="etiqueta">Netlify / Vercel</span>
       </div>
+    </div>
+    <div class="competencias__grupo competencias__grupo--destaque">
+      <h3 class="competencias__titulo"><span aria-hidden="true">✦</span> IA no fluxo de trabalho</h3>
+      <div class="etiquetas">
+        <span class="etiqueta">Claude Code</span>
+        <span class="etiqueta">Prototipagem com IA</span>
+      </div>
+      <p class="competencias__nota">Uso IA pra acelerar prototipagem e revisar código, sem abrir mão de entender e ajustar cada linha entregue.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMO FUNCIONA ===== -->
+<section class="secao" id="processo">
+  <p class="rotulo-secao">// como funciona</p>
+  <h2 class="titulo-secao">Do primeiro contato ao site no ar</h2>
+
+  <div class="processo">
+    <div class="passo">
+      <span class="passo__numero">01</span>
+      <h3>Conversa inicial</h3>
+      <p>Você me conta o que precisa e eu entendo o objetivo real do site: agendar, vender ou mostrar seu trabalho.</p>
+    </div>
+    <div class="passo">
+      <span class="passo__numero">02</span>
+      <h3>Proposta e prazo</h3>
+      <p>Te mando valor fechado e prazo de entrega, sem letra miúda e sem surpresa no meio do caminho.</p>
+    </div>
+    <div class="passo">
+      <span class="passo__numero">03</span>
+      <h3>Entrega com ajustes</h3>
+      <p>Site no ar, testado no celular e no computador, com uma rodada de ajustes já inclusa no valor combinado.</p>
     </div>
   </div>
 </section>
 
 <!-- ===== PROJETOS ===== -->
-<section class="secao" id="projetos">
-  <p class="rotulo-secao">04 <span>// projetos</span></p>
+<section class="secao secao--alternativa" id="projetos">
+  <p class="rotulo-secao">// projetos</p>
   <h2 class="titulo-secao">Projetos</h2>
 
   <div class="projetos__grade">
-    <article class="cartao-projeto">
-      <div class="cartao-projeto__topo">
-        <span class="cartao-projeto__etiqueta">Landing Page</span>
-      </div>
-      <h3>Dentista Lauro</h3>
-      <p>Landing page moderna e responsiva criada para apresentar um serviço e converter visitantes em clientes, com foco em clareza visual e num CTA que chama atenção.</p>
-      <div class="cartao-projeto__tecnologias">
-        <span>HTML</span><span>CSS</span><span>JavaScript</span>
-      </div>
-      <a href="https://dr-lauro-santos.netlify.app/" target="_blank" rel="noopener noreferrer" class="cartao-projeto__link">Abrir projeto →</a>
-    </article>
 
-    <article class="cartao-projeto">
-      <div class="cartao-projeto__topo">
-        <span class="cartao-projeto__etiqueta">Landing Page</span>
+    <article class="vitrine">
+      <div class="vitrine__toldo">
+        <span class="vitrine__etiqueta">Landing Page</span>
+        <span class="vitrine__status">no ar</span>
       </div>
-      <h3>Estúdio de Tatuagem</h3>
-      <p>Site para um estúdio de tatuagem, com identidade visual forte e foco em apresentar o trabalho da artista de forma direta para atrair novos clientes.</p>
-      <div class="cartao-projeto__tecnologias">
-        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+      <div class="vitrine__janela">
+        <img src="imagem/projetos/dr-lauro.jpg" alt="Print da página inicial do site Dr. Lauro Santos — Odontologia Estética" width="900" height="562" loading="lazy">
       </div>
-      <a href="https://alinesantostattoo.netlify.app/" target="_blank" rel="noopener noreferrer" class="cartao-projeto__link">Abrir projeto →</a>
-    </article>
-
-    <article class="cartao-projeto cartao-projeto--em-breve">
-      <div class="cartao-projeto__topo">
-        <span class="cartao-projeto__etiqueta">Cardapio Digital</span>
-      </div>
-      <h3>Cardapio Pizzaria</h3>
-      <p>Catálogo com 8 categorias e busca em tempo real,
-        carrinho de compras com fotos, checkout completo e envio automático do pedido via WhatsApp,
-        montador de pizza personalizada (tamanho, múltiplos sabores, borda).
-        Layout 100% responsivo (mobile, tablet, desktop) com menu adaptativo,
-        status de funcionamento dinâmico por dia da semana.</p>
-      <div class="cartao-projeto__tecnologias">
-        <span>HTML</span><span>CSS</span><span>JavaScript</span>
-        <a href="https://pizzaria-lagoinha.vercel.app/" target="_blank" rel="noopener noreferrer" class="cartao-projeto__link">Abrir projeto → ></a>
+      <div class="vitrine__corpo">
+        <h3>Dr. Lauro Santos</h3>
+        <dl class="vitrine__caso">
+          <dt>O desafio</dt>
+          <dd>Consultório de odontologia estética dependia só do Instagram e do boca a boca pra conseguir novos agendamentos.</dd>
+          <dt>O que entreguei</dt>
+          <dd>Landing page de uma página só, direta e responsiva, com os tratamentos em destaque e um caminho de 1 clique até o WhatsApp.</dd>
+        </dl>
+        <div class="vitrine__tecnologias">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <a href="https://dr-lauro-santos.netlify.app/" target="_blank" rel="noopener noreferrer" class="vitrine__link">Visitar site →</a>
       </div>
     </article>
 
-    <article class="cartao-projeto cartao-projeto--em-breve">
-      <div class="cartao-projeto__topo">
-        <span class="cartao-projeto__etiqueta">Autenticação</span>
+    <article class="vitrine">
+      <div class="vitrine__toldo">
+        <span class="vitrine__etiqueta">Landing Page</span>
+        <span class="vitrine__status">no ar</span>
       </div>
-      <h3>Tela de Login</h3>
-      <p>Tela de autenticação com validação de formulário e foco em usabilidade. Em construção — em breve com link para o projeto ao vivo.</p>
-      <div class="cartao-projeto__tecnologias">
-        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+      <div class="vitrine__janela">
+        <img src="imagem/projetos/aline-tattoo.jpg" alt="Print da página inicial do site Aline Santos Tattoo" width="900" height="562" loading="lazy">
       </div>
-      <span class="cartao-projeto__link cartao-projeto__link--desabilitado">Em breve</span>
+      <div class="vitrine__corpo">
+        <h3>Aline Santos Tattoo</h3>
+        <dl class="vitrine__caso">
+          <dt>O desafio</dt>
+          <dd>Estúdio de tatuagem precisava de um espaço próprio pra mostrar o portfólio, sem depender só do feed do Instagram.</dd>
+          <dt>O que entreguei</dt>
+          <dd>Site com identidade visual forte, alinhada ao estilo da artista, com o trabalho em destaque e contato direto.</dd>
+        </dl>
+        <div class="vitrine__tecnologias">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <a href="https://alinesantostattoo.netlify.app/" target="_blank" rel="noopener noreferrer" class="vitrine__link">Visitar site →</a>
+      </div>
     </article>
+
+    <article class="vitrine">
+      <div class="vitrine__toldo">
+        <span class="vitrine__etiqueta">Cardápio Digital</span>
+        <span class="vitrine__status">no ar</span>
+      </div>
+      <div class="vitrine__janela">
+        <img src="imagem/projetos/pizzaria-lagoinha.jpg" alt="Print do cardápio digital da Pizzaria Lagoinha" width="900" height="562" loading="lazy">
+      </div>
+      <div class="vitrine__corpo">
+        <h3>Pizzaria Lagoinha</h3>
+        <dl class="vitrine__caso">
+          <dt>O desafio</dt>
+          <dd>Pedidos eram feitos manualmente pelo WhatsApp, sem cardápio organizado nem forma de montar pizza personalizada.</dd>
+          <dt>O que entreguei</dt>
+          <dd>Cardápio com 8 categorias, busca em tempo real, montador de pizza (tamanho, sabores, borda), carrinho e checkout que envia o pedido pronto pro WhatsApp — com status de funcionamento automático por dia da semana.</dd>
+        </dl>
+        <div class="vitrine__tecnologias">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <a href="https://pizzaria-lagoinha.vercel.app/" target="_blank" rel="noopener noreferrer" class="vitrine__link">Visitar site →</a>
+      </div>
+    </article>
+
+    <article class="vitrine">
+      <div class="vitrine__toldo">
+        <span class="vitrine__etiqueta">Autenticação</span>
+        <span class="vitrine__status">em construção</span>
+      </div>
+      <div class="vitrine__janela vitrine__janela--vazia">Print em breve — projeto ainda em desenvolvimento</div>
+      <div class="vitrine__corpo">
+        <h3>Tela de Login</h3>
+        <dl class="vitrine__caso">
+          <dt>O contexto</dt>
+          <dd>Projeto pessoal de estudo, focado em validação de formulário e boas práticas de usabilidade em fluxos de autenticação.</dd>
+        </dl>
+        <div class="vitrine__tecnologias">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <span class="vitrine__link vitrine__link--desabilitado">Em breve</span>
+      </div>
+    </article>
+
   </div>
 </section>
 
 <!-- ===== CONTATO ===== -->
-<section class="secao secao--alternativa" id="contato">
-  <p class="rotulo-secao">05 <span>// contato</span></p>
-
-  <div class="contato__estrutura">
-    <div class="contato__introducao">
-      <h2 class="titulo-secao">Vamos trabalhar juntos?</h2>
-      <p class="contato__texto">Estou disponível para freelas, projetos colaborativos ou uma conversa sobre alguma ideia. Me manda uma mensagem, respondo rápido.</p>
-      <a href="mailto:douglasfernandes855@gmail.com?subject=Oi%2C%20vi%20seu%20portf%C3%B3lio" class="botao botao--primario botao--grande">Mandar e-mail</a>
-      <p class="contato__dica">ou escolha um canal ao lado </p>
-    </div>
-    <div class="contato__grade">
-      <a href="https://wa.me/5522998984135" target="_blank" rel="noopener noreferrer" class="cartao-contato cartao-contato--whatsapp">
-        <span class="cartao-contato__icone">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.9-.4-1.8-1-2.6-1.8-.7-.7-1.3-1.6-1.7-2.4-.1-.3 0-.4.1-.6.2-.2.7-.8.9-1 .1-.2.1-.4 0-.6-.1-.2-.7-1.6-.9-2.1-.2-.5-.4-.4-.6-.4h-.6c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.6.1 1.2.6 2.4 1.4 3.5 1.4 2 3.1 3.6 5.3 4.5 1.9.8 2.6.6 3.1.5.6-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.2-.2-.5-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.4.9.9-3.3-.2-.3C3.7 14.7 3.2 13.4 3.2 12 3.2 7.2 7.2 3.2 12 3.2S20.8 7.2 20.8 12 16.8 20.2 12 20.2z"/></svg>
-        </span>
-        <span class="cartao-contato__info">
-          <span class="cartao-contato__titulo">WhatsApp</span>
-          <span class="cartao-contato__valor">Resposta rápida</span>
-        </span>
-        <span class="cartao-contato__seta">→</span>
-      </a>
-
-      <a href="https://www.instagram.com/douglas_dev_web?igsh=MWFqZThxNzBndDV5bw%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" class="cartao-contato cartao-contato--instagram">
-        <span class="cartao-contato__icone">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-        </span>
-        <span class="cartao-contato__info">
-          <span class="cartao-contato__titulo">Instagram</span>
-          <span class="cartao-contato__valor">Bastidores e projetos</span>
-        </span>
-        <span class="cartao-contato__seta">→</span>
-      </a>
-
-      <a href="https://www.linkedin.com/in/douglas-fernandes-3a7736227" target="_blank" rel="noopener noreferrer" class="cartao-contato cartao-contato--linkedin">
-        <span class="cartao-contato__icone">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.6 4.1 5.5 3 5.5S1 4.6 1 3.5 1.9 1.5 3 1.5s1.98.9 1.98 2zM1.5 8.2h3V22h-3V8.2zM8.7 8.2h2.9v1.9h.04c.4-.8 1.4-1.9 3.2-1.9 3.4 0 4 2.2 4 5.1V22h-3v-6.1c0-1.5 0-3.3-2.1-3.3-2.1 0-2.4 1.6-2.4 3.2V22h-3V8.2z"/></svg>
-        </span>
-        <span class="cartao-contato__info">
-          <span class="cartao-contato__titulo">LinkedIn</span>
-          <span class="cartao-contato__valor">Trajetória profissional</span>
-        </span>
-        <span class="cartao-contato__seta">→</span>
-      </a>
-
-      <a href="https://github.com/DouglasFernandesDev" target="_blank" rel="noopener noreferrer" class="cartao-contato cartao-contato--github">
-        <span class="cartao-contato__icone">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5a10.5 10.5 0 0 0-3.32 20.47c.53.1.72-.23.72-.51v-1.98c-2.94.64-3.56-1.42-3.56-1.42-.48-1.22-1.17-1.55-1.17-1.55-.96-.65.07-.64.07-.64 1.06.07 1.62 1.09 1.62 1.09.94 1.61 2.47 1.15 3.07.88.1-.68.37-1.15.67-1.41-2.35-.27-4.82-1.17-4.82-5.22 0-1.15.41-2.09 1.09-2.83-.11-.27-.47-1.36.1-2.83 0 0 .89-.29 2.92 1.09a10.1 10.1 0 0 1 5.32 0c2.03-1.38 2.92-1.09 2.92-1.09.57 1.47.21 2.56.1 2.83.68.74 1.09 1.68 1.09 2.83 0 4.06-2.48 4.95-4.84 5.21.38.33.71.97.71 1.96v2.9c0 .28.19.62.73.51A10.5 10.5 0 0 0 12 1.5z"/></svg>
-        </span>
-        <span class="cartao-contato__info">
-          <span class="cartao-contato__titulo">GitHub</span>
-          <span class="cartao-contato__valor">Código-fonte dos projetos</span>
-        </span>
-        <span class="cartao-contato__seta">→</span>
-      </a>
-
-      <a href="mailto:douglasfernandes855@gmail.com" class="cartao-contato cartao-contato--email">
-        <span class="cartao-contato__icone">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
-        </span>
-        <span class="cartao-contato__info">
-          <span class="cartao-contato__titulo">E-mail</span>
-          <span class="cartao-contato__valor">douglasfernandes855@gmail.com</span>
-        </span>
-        <span class="cartao-contato__seta">→</span>
-      </a>
-    </div>
+<section id="contato">
+  <div class="calcadao" aria-hidden="true">
+    <svg width="100%" height="34" preserveAspectRatio="none"><rect width="100%" height="100%" fill="url(#padraoCalcadao)"/></svg>
   </div>
-  <form class="formulario-whatsapp" id="formularioWhatsapp" action="https://wa.me/5522998984135" method="GET" target="_blank" rel="noopener noreferrer">
-        <p class="formulario-whatsapp__legenda">Prefere já mandar tudo pronto pro WhatsApp?</p>
 
-        <div class="formulario-whatsapp__campo">
-          <label for="nomeContato">Seu nome</label>
-          <input type="text" id="nomeContato" name="nome" placeholder="Como posso te chamar?" required>
-        </div>
+  <div class="contato__cabecalho">
+    <p class="rotulo-secao">// vamos conversar</p>
+    <h2 class="contato__titulo-grande">Bora tirar seu projeto do <em>papel</em>?</h2>
+    <p class="contato__texto-grande">Estou disponível para freelas, projetos colaborativos ou uma conversa sobre alguma ideia. Me manda uma mensagem, respondo rápido.</p>
+    <a href="https://wa.me/5522998984135" target="_blank" rel="noopener noreferrer" class="botao botao--primario botao--grande">Chamar no WhatsApp</a>
+  </div>
 
-        <div class="formulario-whatsapp__campo">
-          <label for="mensagemContato">Mensagem</label>
-          <textarea id="mensagemContato" name="mensagem" rows="3" required>Olá, gostaria de saber mais sobre um projeto.</textarea>
-        </div>
+  <div class="contato__corpo">
+    <div class="contato__estrutura">
+      <div class="contato__introducao">
+        <h3 class="titulo-secao titulo-secao--pequeno">Outros canais</h3>
+        <p class="contato__texto">Prefere e-mail, ver o código-fonte ou dar uma olhada nos bastidores? Escolhe um canal ao lado.</p>
+      </div>
+      <div class="contato__grade">
+        <a href="https://wa.me/5522998984135" target="_blank" rel="noopener noreferrer" class="cartao-contato cartao-contato--whatsapp">
+          <span class="cartao-contato__icone">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.9-.4-1.8-1-2.6-1.8-.7-.7-1.3-1.6-1.7-2.4-.1-.3 0-.4.1-.6.2-.2.7-.8.9-1 .1-.2.1-.4 0-.6-.1-.2-.7-1.6-.9-2.1-.2-.5-.4-.4-.6-.4h-.6c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.6.1 1.2.6 2.4 1.4 3.5 1.4 2 3.1 3.6 5.3 4.5 1.9.8 2.6.6 3.1.5.6-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.2-.2-.5-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.4.9.9-3.3-.2-.3C3.7 14.7 3.2 13.4 3.2 12 3.2 7.2 7.2 3.2 12 3.2S20.8 7.2 20.8 12 16.8 20.2 12 20.2z"/></svg>
+          </span>
+          <span class="cartao-contato__info">
+            <span class="cartao-contato__titulo">WhatsApp</span>
+            <span class="cartao-contato__valor">Resposta rápida</span>
+          </span>
+          <span class="cartao-contato__seta">→</span>
+        </a>
 
-        <button type="submit" class="botao botao--primario formulario-whatsapp__enviar">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.9-.4-1.8-1-2.6-1.8-.7-.7-1.3-1.6-1.7-2.4-.1-.3 0-.4.1-.6.2-.2.7-.8.9-1 .1-.2.1-.4 0-.6-.1-.2-.7-1.6-.9-2.1-.2-.5-.4-.4-.6-.4h-.6c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.6.1 1.2.6 2.4 1.4 3.5 1.4 2 3.1 3.6 5.3 4.5 1.9.8 2.6.6 3.1.5.6-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.2-.2-.5-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.4.9.9-3.3-.2-.3C3.7 14.7 3.2 13.4 3.2 12 3.2 7.2 7.2 3.2 12 3.2S20.8 7.2 20.8 12 16.8 20.2 12 20.2z"/></svg>
-          Enviar no WhatsApp
-        </button>
-  </form>
+        <a href="https://www.instagram.com/douglas_dev_web?igsh=MWFqZThxNzBndDV5bw%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" class="cartao-contato cartao-contato--instagram">
+          <span class="cartao-contato__icone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          </span>
+          <span class="cartao-contato__info">
+            <span class="cartao-contato__titulo">Instagram</span>
+            <span class="cartao-contato__valor">Bastidores e projetos</span>
+          </span>
+          <span class="cartao-contato__seta">→</span>
+        </a>
 
+        <a href="https://www.linkedin.com/in/douglas-fernandes-3a7736227" target="_blank" rel="noopener noreferrer" class="cartao-contato cartao-contato--linkedin">
+          <span class="cartao-contato__icone">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.6 4.1 5.5 3 5.5S1 4.6 1 3.5 1.9 1.5 3 1.5s1.98.9 1.98 2zM1.5 8.2h3V22h-3V8.2zM8.7 8.2h2.9v1.9h.04c.4-.8 1.4-1.9 3.2-1.9 3.4 0 4 2.2 4 5.1V22h-3v-6.1c0-1.5 0-3.3-2.1-3.3-2.1 0-2.4 1.6-2.4 3.2V22h-3V8.2z"/></svg>
+          </span>
+          <span class="cartao-contato__info">
+            <span class="cartao-contato__titulo">LinkedIn</span>
+            <span class="cartao-contato__valor">Trajetória profissional</span>
+          </span>
+          <span class="cartao-contato__seta">→</span>
+        </a>
+
+        <a href="https://github.com/DouglasFernandesDev" target="_blank" rel="noopener noreferrer" class="cartao-contato cartao-contato--github">
+          <span class="cartao-contato__icone">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5a10.5 10.5 0 0 0-3.32 20.47c.53.1.72-.23.72-.51v-1.98c-2.94.64-3.56-1.42-3.56-1.42-.48-1.22-1.17-1.55-1.17-1.55-.96-.65.07-.64.07-.64 1.06.07 1.62 1.09 1.62 1.09.94 1.61 2.47 1.15 3.07.88.1-.68.37-1.15.67-1.41-2.35-.27-4.82-1.17-4.82-5.22 0-1.15.41-2.09 1.09-2.83-.11-.27-.47-1.36.1-2.83 0 0 .89-.29 2.92 1.09a10.1 10.1 0 0 1 5.32 0c2.03-1.38 2.92-1.09 2.92-1.09.57 1.47.21 2.56.1 2.83.68.74 1.09 1.68 1.09 2.83 0 4.06-2.48 4.95-4.84 5.21.38.33.71.97.71 1.96v2.9c0 .28.19.62.73.51A10.5 10.5 0 0 0 12 1.5z"/></svg>
+          </span>
+          <span class="cartao-contato__info">
+            <span class="cartao-contato__titulo">GitHub</span>
+            <span class="cartao-contato__valor">Código-fonte dos projetos</span>
+          </span>
+          <span class="cartao-contato__seta">→</span>
+        </a>
+
+        <a href="mailto:douglasfernandes855@gmail.com" class="cartao-contato cartao-contato--email">
+          <span class="cartao-contato__icone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/></svg>
+          </span>
+          <span class="cartao-contato__info">
+            <span class="cartao-contato__titulo">E-mail</span>
+            <span class="cartao-contato__valor">douglasfernandes855@gmail.com</span>
+          </span>
+          <span class="cartao-contato__seta">→</span>
+        </a>
+      </div>
+    </div>
+
+    <form class="formulario-whatsapp" id="formularioWhatsapp" action="https://wa.me/5522998984135" method="GET" target="_blank" rel="noopener noreferrer">
+      <p class="formulario-whatsapp__legenda">Prefere já mandar tudo pronto pro WhatsApp?</p>
+
+      <div class="formulario-whatsapp__campo">
+        <label for="nomeContato">Seu nome</label>
+        <input type="text" id="nomeContato" name="nome" placeholder="Como posso te chamar?" required>
+      </div>
+
+      <div class="formulario-whatsapp__campo">
+        <label for="mensagemContato">Mensagem</label>
+        <textarea id="mensagemContato" name="mensagem" rows="3" required>Olá, gostaria de saber mais sobre um projeto.</textarea>
+      </div>
+
+      <button type="submit" class="botao botao--primario formulario-whatsapp__enviar">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.9-.4-1.8-1-2.6-1.8-.7-.7-1.3-1.6-1.7-2.4-.1-.3 0-.4.1-.6.2-.2.7-.8.9-1 .1-.2.1-.4 0-.6-.1-.2-.7-1.6-.9-2.1-.2-.5-.4-.4-.6-.4h-.6c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.6.1 1.2.6 2.4 1.4 3.5 1.4 2 3.1 3.6 5.3 4.5 1.9.8 2.6.6 3.1.5.6-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.2-.2-.5-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.4.9.9-3.3-.2-.3C3.7 14.7 3.2 13.4 3.2 12 3.2 7.2 7.2 3.2 12 3.2S20.8 7.2 20.8 12 16.8 20.2 12 20.2z"/></svg>
+        Enviar no WhatsApp
+      </button>
+    </form>
+  </div>
 </section>
 
 <!-- ===== RODAPÉ ===== -->
 <footer class="rodape">
-  <p>&copy; <span id="ano"></span> Douglas Fernandes. Feito com cuidado.</p>
+  <p>© <span id="ano"></span> Douglas Fernandes. Codado à mão, com uma ajuda do Claude Code.</p>
 </footer>
 
 <!-- ===== BOTÃO WHATSAPP FLUTUANTE ===== -->

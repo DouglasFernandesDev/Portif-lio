@@ -68,9 +68,9 @@ if(formularioWhatsapp){
 // =========================================================
 const elementoDigitado = document.getElementById('digitado');
 const frases = [
-  '"criar interfaces que as pessoas usam"',
-  '"código limpo e responsivo"',
-  '"boas experiências digitais"'
+  'landing pages que carregam rápido',
+  'sites com caminho claro pro WhatsApp',
+  'código revisado linha por linha, com ou sem IA no meio'
 ];
 
 let indiceFrase = 0;
@@ -115,7 +115,7 @@ if(elementoDigitado){
 // REVELAR AO ROLAR A PÁGINA (scroll reveal)
 // =========================================================
 const alvosParaRevelar = document.querySelectorAll(
-  '.cartao-estatistica, .etiqueta, .cartao-projeto, .cartao-contato, .cartao-editor, .sobre__texto'
+  '.cartao-estatistica, .etiqueta, .passo, .vitrine, .cartao-contato, .sobre__texto'
 );
 
 alvosParaRevelar.forEach(elemento => elemento.classList.add('revelar'));
