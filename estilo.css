@@ -28,6 +28,8 @@
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 
+.sprite-oculto{ position:absolute; }
+
 html{ scroll-behavior:smooth; }
 
 body{
@@ -49,7 +51,7 @@ a{ color:inherit; text-decoration:none; }
 
 .rotulo-secao{
   font-family: var(--fonte-mono);
-  font-size:.78rem;
+  font-size:.875rem;
   color: var(--amarelo);
   letter-spacing:.03em;
   margin-bottom: 14px;
@@ -103,6 +105,11 @@ a{ color:inherit; text-decoration:none; }
   font-size:1.3rem;
   letter-spacing:.02em;
   color: var(--texto);
+  display:inline-block;
+  /* padding + margem negativa: aumenta a área de toque (alvo >=44px)
+     sem alterar o tamanho visual nem empurrar os elementos vizinhos. */
+  padding: 12px 4px;
+  margin: -12px -4px;
 }
 .logotipo span{ color: var(--amarelo); }
 
@@ -144,7 +151,7 @@ a{ color:inherit; text-decoration:none; }
 }
 
 .botao-menu{
-  width: 38px; height:38px;
+  width: 44px; height:44px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -197,7 +204,7 @@ a{ color:inherit; text-decoration:none; }
   align-items:center;
   gap:8px;
   font-family: var(--fonte-mono);
-  font-size: .75rem;
+  font-size: .875rem;
   color: var(--texto-suave);
   background: var(--grafite-alto);
   border:1px solid var(--borda);
@@ -242,7 +249,7 @@ a{ color:inherit; text-decoration:none; }
 
 .capa__terminal{
   font-family: var(--fonte-mono);
-  font-size:.82rem;
+  font-size:.9rem;
   color: var(--texto-suave);
   display:flex;
   gap:8px;
@@ -278,7 +285,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .capa__assinatura{
   font-family: var(--fonte-mono);
-  font-size:.78rem;
+  font-size:.875rem;
   color: var(--texto-suave);
   line-height:1.4;
 }
@@ -294,8 +301,11 @@ a{ color:inherit; text-decoration:none; }
   gap:8px;
   padding: 13px 24px;
   border-radius: 10px;
+  font-family: inherit;
   font-weight:700;
   font-size:.92rem;
+  background: none;
+  cursor: pointer;
   transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
   border: 1px solid transparent;
 }
@@ -346,29 +356,39 @@ a{ color:inherit; text-decoration:none; }
   margin-bottom: 14px;
 }
 .sobre__estatisticas{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-.cartao-estatistica{
-  background: var(--grafite-alto);
-  border:1px solid var(--borda);
-  border-radius: var(--raio);
-  padding: 18px 20px;
   display:flex;
   flex-direction:column;
-  gap:4px;
+  border-left: 2px solid var(--amarelo);
+  padding-left: 22px;
+}
+.cartao-estatistica{
+  display:flex;
+  flex-direction:row;
+  align-items:baseline;
+  justify-content:space-between;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid var(--borda);
+}
+.cartao-estatistica:first-child{
+  border-top:none;
+  padding-top:0;
+}
+.cartao-estatistica:last-child{
+  padding-bottom:0;
 }
 .cartao-estatistica__numero{
   font-family: var(--fonte-display);
   font-weight:400;
   color: var(--amarelo);
-  font-size:1.1rem;
+  font-size:1.35rem;
   text-transform: uppercase;
+  white-space:nowrap;
 }
 .cartao-estatistica__legenda{
-  font-size:.85rem;
+  font-size:.9rem;
   color: var(--texto-suave);
+  text-align:right;
 }
 
 /* =========================================================
@@ -383,6 +403,7 @@ a{ color:inherit; text-decoration:none; }
   border: 1px solid var(--borda);
   border-radius: var(--raio);
   padding: 20px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 16px 32px -24px rgba(0,0,0,.6);
 }
 .competencias__grupo--destaque{
   border-color: rgba(47,217,138,.35);
@@ -401,7 +422,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .competencias__grupo--destaque .competencias__titulo{ color: var(--verde); }
 .competencias__nota{
-  font-size:.85rem;
+  font-size:.875rem;
   color: var(--texto-suave);
   margin-top:14px;
   line-height:1.5;
@@ -413,7 +434,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .etiqueta{
   font-family: var(--fonte-mono);
-  font-size:.78rem;
+  font-size:.875rem;
   background: var(--grafite);
   border: 1px solid var(--borda);
   color: var(--texto);
@@ -438,7 +459,19 @@ a{ color:inherit; text-decoration:none; }
   border: 1px solid var(--borda);
   border-radius: var(--raio);
   background: var(--grafite-alto);
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 16px 32px -24px rgba(0,0,0,.6);
 }
+.passo::before{
+  content:"";
+  display:block;
+  height:4px;
+  border-radius:2px;
+  margin-bottom:20px;
+  background: var(--borda);
+}
+.passo:nth-child(1)::before{ background: linear-gradient(90deg, var(--amarelo) 33%, var(--borda) 33%); }
+.passo:nth-child(2)::before{ background: linear-gradient(90deg, var(--amarelo) 66%, var(--borda) 66%); }
+.passo:nth-child(3)::before{ background: linear-gradient(90deg, var(--amarelo) 100%, var(--borda) 100%); }
 .passo__numero{
   font-family: var(--fonte-display);
   font-size: 2.2rem;
@@ -473,11 +506,13 @@ a{ color:inherit; text-decoration:none; }
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  transition: transform .2s ease, border-color .2s ease;
+  box-shadow: 0 16px 32px -24px rgba(0,0,0,.6);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 .vitrine:hover{
   transform: translateY(-4px);
   border-color: var(--amarelo);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,.65);
 }
 /* barra estilo toldo de loja, com borda recortada */
 .vitrine__toldo{
@@ -495,7 +530,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .vitrine__etiqueta{
   font-family: var(--fonte-mono);
-  font-size:.7rem;
+  font-size:.875rem;
   color: var(--grafite);
   background: var(--amarelo);
   padding: 4px 10px;
@@ -504,7 +539,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .vitrine__status{
   font-family: var(--fonte-mono);
-  font-size:.68rem;
+  font-size:.875rem;
   color: var(--texto-suave);
 }
 .vitrine__janela{
@@ -547,7 +582,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .vitrine__caso dt{
   font-family: var(--fonte-mono);
-  font-size:.68rem;
+  font-size:.875rem;
   text-transform: uppercase;
   letter-spacing:.04em;
   color: var(--amarelo);
@@ -577,6 +612,9 @@ a{ color:inherit; text-decoration:none; }
   color: var(--amarelo);
   font-weight:700;
   font-size:.9rem;
+  display:flex;
+  align-items:center;
+  min-height:44px;
 }
 .vitrine__link--desabilitado{
   color: var(--texto-suave);
@@ -664,7 +702,8 @@ a{ color:inherit; text-decoration:none; }
   background: var(--grafite);
   border: 1px solid var(--borda);
   border-radius: 10px;
-  padding: 11px 14px;
+  padding: 13px 14px;
+  min-height:44px;
   color: var(--texto);
   font-family: var(--fonte-texto);
   font-size:.9rem;
@@ -685,6 +724,22 @@ a{ color:inherit; text-decoration:none; }
 .formulario-whatsapp__enviar:hover{ transform: translateY(-2px); }
 .formulario-whatsapp__enviar svg{ width:18px; height:18px; }
 
+.formulario-whatsapp__aviso-popup{
+  display:block;
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius: var(--raio);
+  background: var(--amarelo-suave);
+  color: var(--amarelo);
+  font-size:.85rem;
+  text-align:center;
+  text-decoration: underline;
+}
+/* [hidden] tem a mesma especificidade da regra acima; sem este seletor
+   combinado ela venceria por ordem de origem e o aviso ficaria visível
+   mesmo com o atributo hidden aplicado pelo script.js. */
+.formulario-whatsapp__aviso-popup[hidden]{ display:none; }
+
 .contato__grade{
   display:grid;
   grid-template-columns: 1fr;
@@ -702,7 +757,8 @@ a{ color:inherit; text-decoration:none; }
   border: 1px solid var(--borda);
   border-radius: 14px;
   overflow:hidden;
-  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+  box-shadow: 0 16px 32px -24px rgba(0,0,0,.6);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
 }
 .cartao-contato::before{
   content:"";
@@ -781,15 +837,73 @@ a{ color:inherit; text-decoration:none; }
 .cartao-contato--email{ --marca: var(--amarelo); }
 
 /* =========================================================
+   PÁGINA DE ERRO (404)
+========================================================= */
+.pagina-erro{
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 140px 20px 120px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pagina-erro .rotulo-secao,
+.pagina-erro .titulo-secao{
+  text-align: center;
+}
+.pagina-erro__texto{
+  color: var(--texto-suave);
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+/* =========================================================
+   POLÍTICA DE PRIVACIDADE (texto corrido)
+========================================================= */
+.politica{ padding-top: 96px; }
+.politica__atualizado{
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  color: var(--texto-suave);
+  margin-bottom: 32px;
+}
+.politica p{
+  color: var(--texto-suave);
+  max-width: 68ch;
+  margin-bottom: 16px;
+}
+.politica h2{ margin-top: 36px; }
+.politica a{ color: var(--amarelo); text-decoration: underline; }
+.politica__lista{
+  color: var(--texto-suave);
+  max-width: 68ch;
+  margin: 0 0 16px 20px;
+  line-height:1.7;
+}
+
+/* =========================================================
    RODAPÉ
 ========================================================= */
 .rodape{
   text-align:center;
   padding: 30px 20px 90px;
   color: var(--texto-suave);
-  font-size:.85rem;
+  font-size:.875rem;
   font-family: var(--fonte-mono);
 }
+.rodape__link-cookies{
+  background:none;
+  border:none;
+  color: var(--texto-suave);
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  text-decoration: underline;
+  cursor:pointer;
+  padding: 8px;
+  margin-top: 6px;
+}
+.rodape__link-cookies:hover{ color: var(--texto); }
 
 /* =========================================================
    WHATSAPP FLUTUANTE
@@ -821,6 +935,39 @@ a{ color:inherit; text-decoration:none; }
 @keyframes pulsar{
   0%{ transform: scale(1); opacity:.7; }
   100%{ transform: scale(1.6); opacity:0; }
+}
+
+/* =========================================================
+   BANNER DE COOKIES
+========================================================= */
+.banner-cookies{
+  position: fixed;
+  left:0; right:0; bottom:0;
+  z-index: 70;
+  background: var(--grafite-alto);
+  border-top: 1px solid var(--borda);
+  padding: 18px 20px calc(18px + env(safe-area-inset-bottom));
+  box-shadow: 0 -16px 32px -16px rgba(0,0,0,.5);
+}
+.banner-cookies[hidden]{ display:none; }
+.banner-cookies__titulo{
+  font-family: var(--fonte-texto);
+  font-weight:700;
+  font-size:.95rem;
+  margin-bottom: 6px;
+}
+.banner-cookies__texto{
+  color: var(--texto-suave);
+  font-size:.875rem;
+  line-height:1.5;
+  margin-bottom: 14px;
+  max-width: 62ch;
+}
+.banner-cookies__texto a{ color: var(--amarelo); text-decoration: underline; }
+.banner-cookies__acoes{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
 }
 
 .revelar{

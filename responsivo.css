@@ -65,9 +65,9 @@
     gap: 60px;
   }
   .sobre__texto{ flex:1.3; }
-  .sobre__estatisticas{ flex:1; grid-template-columns: 1fr; align-self:start; }
+  .sobre__estatisticas{ flex:1; align-self:center; }
 
-  .competencias{ flex-direction: row; gap: 24px; align-items:flex-start; }
+  .competencias{ flex-direction: row; gap: 24px; }
   .competencias__grupo{ flex:1; }
 
   .whatsapp-flutuante{ right: 32px; bottom: 32px; }
@@ -99,6 +99,18 @@
     grid-column: 1 / -1;
     background: linear-gradient(120deg, var(--grafite), var(--grafite-alto));
   }
+
+  .banner-cookies{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 32px;
+    padding: 18px 32px;
+  }
+  .banner-cookies__conteudo{ flex:1; max-width: var(--largura-max); }
+  .banner-cookies__titulo{ margin-bottom:2px; }
+  .banner-cookies__texto{ margin-bottom:0; }
+  .banner-cookies__acoes{ flex-shrink:0; }
 }
 
 /* Desktop grande ≥ 1200px */

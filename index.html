@@ -16,6 +16,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://douglasfernandesdev.github.io/Portif-lio/imagem/og-image.jpg">
 
+<!-- frame-ancestors exige header HTTP (não funciona via <meta>) e o GitHub Pages não permite configurar headers; sem clickjacking protection nesse ponto. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://js.sentry-cdn.com https://browser.sentry-cdn.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'; worker-src 'self' blob:">
+
+<!-- Sentry Loader Script: carregado o quanto antes pra capturar erros de qualquer parte da página -->
+<script src="https://js.sentry-cdn.com/ead3173dee708e9630beb6ad1d1217c9.min.js" crossorigin="anonymous"></script>
+
 <link rel="icon" href="imagem/favicon.svg" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +49,7 @@
 <body>
 
 <!-- sprite oculto com o padrão do calçadão, usado nas duas faixas-assinatura da página -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<svg width="0" height="0" class="sprite-oculto" aria-hidden="true">
   <defs>
     <pattern id="padraoCalcadao" width="80" height="34" patternUnits="userSpaceOnUse">
       <rect width="80" height="34" fill="var(--grafite)"/>
@@ -73,6 +79,8 @@
     </button>
   </div>
 </header>
+
+<main>
 
 <!-- ===== CAPA ===== -->
 <section class="capa" id="capa">
@@ -118,7 +126,7 @@
     </div>
     <div class="sobre__estatisticas">
       <div class="cartao-estatistica">
-        <span class="cartao-estatistica__numero">3 sites no ar</span>
+        <span class="cartao-estatistica__numero">4 sites no ar</span>
         <span class="cartao-estatistica__legenda">Para negócios reais</span>
       </div>
       <div class="cartao-estatistica">
@@ -270,6 +278,29 @@
 
     <article class="vitrine">
       <div class="vitrine__toldo">
+        <span class="vitrine__etiqueta">Cardápio Digital</span>
+        <span class="vitrine__status">no ar</span>
+      </div>
+      <div class="vitrine__janela">
+        <img src="imagem/projetos/sagrado-creperia.jpg" alt="Print da página inicial do cardápio digital da Sagrado Creperia" width="900" height="562" loading="lazy">
+      </div>
+      <div class="vitrine__corpo">
+        <h3>Sagrado Creperia</h3>
+        <dl class="vitrine__caso">
+          <dt>O desafio</dt>
+          <dd>Creperia em Cabo Frio - RJ atendia só delivery nos fins de semana, mas os pedidos vinham soltos pelo WhatsApp, sem cardápio organizado nem cálculo de frete por bairro.</dd>
+          <dt>O que entreguei</dt>
+          <dd>Cardápio digital com busca, categorias (salgados, doces, bebidas), carrinho com observação por item e checkout que calcula o frete por bairro e envia o pedido pronto pro WhatsApp.</dd>
+        </dl>
+        <div class="vitrine__tecnologias">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <a href="https://douglasfernandesdev.github.io/Cardapio-Creperia/" target="_blank" rel="noopener noreferrer" class="vitrine__link">Visitar site →</a>
+      </div>
+    </article>
+
+    <article class="vitrine">
+      <div class="vitrine__toldo">
         <span class="vitrine__etiqueta">Autenticação</span>
         <span class="vitrine__status">em construção</span>
       </div>
@@ -377,21 +408,40 @@
 
       <div class="formulario-whatsapp__campo">
         <label for="mensagemContato">Mensagem</label>
-        <textarea id="mensagemContato" name="mensagem" rows="3" required>Olá, gostaria de saber mais sobre um projeto.</textarea>
+        <textarea id="mensagemContato" name="text" rows="3" required>Olá, gostaria de saber mais sobre um projeto.</textarea>
       </div>
 
       <button type="submit" class="botao botao--primario formulario-whatsapp__enviar">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.9-.4-1.8-1-2.6-1.8-.7-.7-1.3-1.6-1.7-2.4-.1-.3 0-.4.1-.6.2-.2.7-.8.9-1 .1-.2.1-.4 0-.6-.1-.2-.7-1.6-.9-2.1-.2-.5-.4-.4-.6-.4h-.6c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.6.1 1.2.6 2.4 1.4 3.5 1.4 2 3.1 3.6 5.3 4.5 1.9.8 2.6.6 3.1.5.6-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.2-.2-.5-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.4.9.9-3.3-.2-.3C3.7 14.7 3.2 13.4 3.2 12 3.2 7.2 7.2 3.2 12 3.2S20.8 7.2 20.8 12 16.8 20.2 12 20.2z"/></svg>
         Enviar no WhatsApp
       </button>
+
+      <a href="#" id="avisoPopupBloqueado" class="formulario-whatsapp__aviso-popup" target="_blank" rel="noopener noreferrer" hidden>
+        O navegador bloqueou a abertura automática. Toque aqui para abrir o WhatsApp.
+      </a>
     </form>
   </div>
 </section>
 
+</main>
+
 <!-- ===== RODAPÉ ===== -->
 <footer class="rodape">
   <p>© <span id="ano"></span> Douglas Fernandes. Codado à mão, com uma ajuda do Claude Code.</p>
+  <p><button type="button" id="preferenciasCookies" class="rodape__link-cookies">Preferências de cookies</button></p>
 </footer>
+
+<!-- ===== BANNER DE COOKIES ===== -->
+<div class="banner-cookies" id="bannerCookies" role="dialog" aria-modal="false" aria-labelledby="tituloBannerCookies" hidden>
+  <div class="banner-cookies__conteudo">
+    <p id="tituloBannerCookies" class="banner-cookies__titulo">Usamos cookies</p>
+    <p class="banner-cookies__texto">Usamos cookies de análise (Google Analytics) para entender como o site é usado. Você pode recusar sem perder nenhuma funcionalidade. <a href="politica-de-privacidade/">Saiba mais</a>.</p>
+  </div>
+  <div class="banner-cookies__acoes">
+    <button type="button" id="recusarCookies" class="botao botao--secundario">Recusar</button>
+    <button type="button" id="aceitarCookies" class="botao botao--primario">Aceitar</button>
+  </div>
+</div>
 
 <!-- ===== BOTÃO WHATSAPP FLUTUANTE ===== -->
 <a href="https://wa.me/5522998984135" target="_blank" rel="noopener noreferrer" class="whatsapp-flutuante" aria-label="Falar no WhatsApp">
@@ -400,5 +450,6 @@
 </a>
 
 <script src="script.js"></script>
+<script type="module" src="js/modules/consentimento-cookies.js"></script>
 </body>
 </html>
