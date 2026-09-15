@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página não encontrada — Douglas Fernandes</title>
+<meta name="description" content="A página que você tentou acessar não existe ou foi movida.">
+<meta name="robots" content="noindex">
+
+<!-- frame-ancestors exige header HTTP (não funciona via <meta>) e o GitHub Pages não permite configurar headers; sem clickjacking protection nesse ponto. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://js.sentry-cdn.com https://browser.sentry-cdn.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'; worker-src 'self' blob:">
+
+<!-- Sentry Loader Script: carregado o quanto antes pra capturar erros de qualquer parte da página -->
+<script src="https://js.sentry-cdn.com/ead3173dee708e9630beb6ad1d1217c9.min.js" crossorigin="anonymous"></script>
+
+<link rel="icon" href="imagem/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="responsivo.css">
+</head>
+<body>
+
+<div id="topo"></div>
+
+<!-- ===== CABEÇALHO ===== -->
+<header class="cabecalho">
+  <div class="cabecalho__interior">
+    <a href="./" class="logotipo">Douglas<span>.</span></a>
+
+    <nav class="navegacao" id="navegacao">
+      <a href="./" class="navegacao__link">Início</a>
+      <a href="./#sobre" class="navegacao__link">Sobre</a>
+      <a href="./#habilidades" class="navegacao__link">Skills</a>
+      <a href="./#processo" class="navegacao__link">Processo</a>
+      <a href="./#projetos" class="navegacao__link">Projetos</a>
+      <a href="./#contato" class="navegacao__link navegacao__link--destaque">Contato</a>
+    </nav>
+
+    <button class="botao-menu" id="botaoMenu" aria-label="Abrir menu" aria-expanded="false" aria-controls="navegacao">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== 404 ===== -->
+<main class="pagina-erro">
+  <p class="rotulo-secao">// erro 404</p>
+  <h1 class="titulo-secao">Essa página não existe</h1>
+  <p class="pagina-erro__texto">O endereço que você tentou acessar não existe ou foi movido. Se você digitou o link à mão, confira se está tudo certo — ou volte para o início.</p>
+  <a href="./" class="botao botao--primario">Voltar para o início</a>
+</main>
+
+<!-- ===== RODAPÉ ===== -->
+<footer class="rodape">
+  <p>© <span id="ano"></span> Douglas Fernandes. Codado à mão, com uma ajuda do Claude Code.</p>
+  <p><button type="button" id="preferenciasCookies" class="rodape__link-cookies">Preferências de cookies</button></p>
+</footer>
+
+<!-- ===== BANNER DE COOKIES ===== -->
+<div class="banner-cookies" id="bannerCookies" role="dialog" aria-modal="false" aria-labelledby="tituloBannerCookies" hidden>
+  <div class="banner-cookies__conteudo">
+    <p id="tituloBannerCookies" class="banner-cookies__titulo">Usamos cookies</p>
+    <p class="banner-cookies__texto">Usamos cookies de análise (Google Analytics) para entender como o site é usado. Você pode recusar sem perder nenhuma funcionalidade. <a href="politica-de-privacidade/">Saiba mais</a>.</p>
+  </div>
+  <div class="banner-cookies__acoes">
+    <button type="button" id="recusarCookies" class="botao botao--secundario">Recusar</button>
+    <button type="button" id="aceitarCookies" class="botao botao--primario">Aceitar</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script type="module" src="js/modules/consentimento-cookies.js"></script>
+</body>
+</html>
