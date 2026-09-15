@@ -1,0 +1,16 @@
+# Dependências (se o projeto adotar um bundler no futuro)
+node_modules/
+
+# Variáveis de ambiente e segredos
+.env
+.env.local
+.env.*.local
+
+# Cache/bytecode de scripts Python usados por skills do Claude Code
+__pycache__/
+*.pyc
+
+# Logs e arquivos de editor
+*.log
+.DS_Store
+Thumbs.db

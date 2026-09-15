@@ -1,11 +1,8 @@
 ---
-allowed-tools: Read, Grep, Glob
+allowed-tools: Agent
 description: Run security vulnerability scan
-model: claude-opus-5
 ---
 
-analyse the codebase for security vulnerabilities including:
-- SQL injection risks
-- XSS vulnerabilities
-- Exposed credentials
-- Insecure configurations
+Invoque o agent `auditor-vulnerabilidades` (ferramenta `Agent`, `subagent_type: "auditor-vulnerabilidades"`) para varrer o site atrás de SQL injection, XSS, credenciais expostas e configurações inseguras. Repasse a ele qualquer contexto extra informado aqui: $ARGUMENTS
+
+Não faça a varredura você mesmo neste comando — o agent é quem mantém o checklist completo e atualizado ao stack real do projeto.
