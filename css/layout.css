@@ -1,0 +1,39 @@
+/* =========================================================
+   SEÇÕES (GERAL)
+========================================================= */
+.secao{
+  padding: 70px 20px;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  scroll-margin-top: 66px;
+}
+#contato{ scroll-margin-top: 66px; }
+.secao--alternativa{
+  max-width: none;
+  background: var(--grafite-alto);
+  border-top:1px solid var(--borda);
+  border-bottom:1px solid var(--borda);
+}
+.secao--alternativa > *{
+  max-width: var(--largura-max);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* =========================================================
+   ELEMENTO-ASSINATURA: FAIXA "CALÇADÃO"
+   Textura inspirada no calçadão de Copacabana, usada com
+   moderação — só como divisor de duas seções-chave.
+========================================================= */
+.calcadao{
+  display:block;
+  width:100%;
+  height:34px;
+  line-height:0;
+}
+.calcadao svg{ display:block; }
+
+
+@media (min-width: 960px){
+  .secao{ padding: 100px 32px; }
+}

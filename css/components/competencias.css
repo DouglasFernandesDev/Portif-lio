@@ -1,0 +1,59 @@
+/* =========================================================
+   O QUE EU ENTREGO (HABILIDADES)
+========================================================= */
+.competencias{
+  display:flex;
+  flex-direction:column;
+  gap: 26px;
+}
+.competencias__grupo{
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 20px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 16px 32px -24px rgba(0,0,0,.6);
+}
+.competencias__grupo--destaque{
+  border-color: rgba(47,217,138,.35);
+  background: var(--verde-suave);
+}
+.competencias__titulo{
+  font-family: var(--fonte-mono);
+  font-size:.85rem;
+  color: var(--texto-suave);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing:.05em;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.competencias__grupo--destaque .competencias__titulo{ color: var(--verde); }
+.competencias__nota{
+  font-size:.875rem;
+  color: var(--texto-suave);
+  margin-top:14px;
+  line-height:1.5;
+}
+.etiquetas{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+}
+.etiqueta{
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  background: var(--grafite);
+  border: 1px solid var(--borda);
+  color: var(--texto);
+  padding: 9px 14px;
+  border-radius: 100px;
+  display:inline-flex;
+  gap:6px;
+}
+.competencias__grupo--destaque .etiqueta{ background: var(--grafite-alto); }
+
+
+@media (min-width: 960px){
+  .competencias{ flex-direction: row; gap: 24px; }
+  .competencias__grupo{ flex:1; }
+}

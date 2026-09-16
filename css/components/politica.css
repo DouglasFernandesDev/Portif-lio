@@ -1,0 +1,24 @@
+/* =========================================================
+   POLÍTICA DE PRIVACIDADE (texto corrido)
+========================================================= */
+.politica{ padding-top: 96px; }
+.politica__atualizado{
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  color: var(--texto-suave);
+  margin-bottom: 32px;
+}
+.politica p{
+  color: var(--texto-suave);
+  max-width: 68ch;
+  margin-bottom: 16px;
+}
+.politica h2{ margin-top: 36px; }
+.politica a{ color: var(--amarelo); text-decoration: underline; }
+.politica__lista{
+  color: var(--texto-suave);
+  max-width: 68ch;
+  margin: 0 0 16px 20px;
+  line-height:1.7;
+}
+

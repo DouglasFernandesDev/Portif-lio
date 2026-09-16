@@ -1,0 +1,23 @@
+/* =========================================================
+   RODAPÉ
+========================================================= */
+.rodape{
+  text-align:center;
+  padding: 30px 20px 90px;
+  color: var(--texto-suave);
+  font-size:.875rem;
+  font-family: var(--fonte-mono);
+}
+.rodape__link-cookies{
+  background:none;
+  border:none;
+  color: var(--texto-suave);
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  text-decoration: underline;
+  cursor:pointer;
+  padding: 8px;
+  margin-top: 6px;
+}
+.rodape__link-cookies:hover{ color: var(--texto); }
+

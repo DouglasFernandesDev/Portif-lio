@@ -10,10 +10,10 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Política de Privacidade — Douglas Fernandes">
 <meta property="og:description" content="Como este site trata dados de navegação, cookies e o formulário de contato.">
-<meta property="og:image" content="https://douglasfernandesdev.github.io/Portif-lio/imagem/og-image.jpg">
+<meta property="og:image" content="https://douglasfernandesdev.github.io/Portif-lio/assets/images/og-image.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://douglasfernandesdev.github.io/Portif-lio/imagem/og-image.jpg">
+<meta name="twitter:image" content="https://douglasfernandesdev.github.io/Portif-lio/assets/images/og-image.jpg">
 
 <!-- frame-ancestors exige header HTTP (não funciona via <meta>) e o GitHub Pages não permite configurar headers; sem clickjacking protection nesse ponto. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://js.sentry-cdn.com https://browser.sentry-cdn.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'; worker-src 'self' blob:">
@@ -21,13 +21,19 @@
 <!-- Sentry Loader Script: carregado o quanto antes pra capturar erros de qualquer parte da página -->
 <script src="https://js.sentry-cdn.com/90d9acc795fa257833e94955dda0f5dd.min.js" crossorigin="anonymous"></script>
 
-<link rel="icon" href="../imagem/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../estilo.css">
-<link rel="stylesheet" href="../responsivo.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/components/cabecalho.css">
+<link rel="stylesheet" href="../css/components/botoes.css">
+<link rel="stylesheet" href="../css/components/politica.css">
+<link rel="stylesheet" href="../css/components/rodape.css">
+<link rel="stylesheet" href="../css/components/banner-cookies.css">
+<link rel="stylesheet" href="../css/utilitarios.css">
 </head>
 <body>
 
@@ -115,7 +121,6 @@
   </div>
 </div>
 
-<script src="../script.js"></script>
-<script type="module" src="../js/modules/consentimento-cookies.js"></script>
+<script type="module" src="../js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,99 @@
+/* =========================================================
+   TOKENS DE DESIGN
+   Paleta com referência ao Rio de Janeiro (onde Douglas atua):
+   grafite do asfalto, pedra do calçadão de Copacabana,
+   amarelo-táxi como cor de ação.
+========================================================= */
+:root{
+  --grafite:#14171c;
+  --grafite-alto:#1c2129;
+  --papel:#ece7dc;
+
+  --amarelo:#ffc53d;
+  --amarelo-suave: rgba(255,197,61,.14);
+  --verde:#2fd98a;
+  --verde-suave: rgba(47,217,138,.12);
+
+  --texto:#eceef1;
+  --texto-suave:#96a0ac;
+  --borda: rgba(236,231,220,.10);
+
+  --fonte-display:'Anton', 'Anton Fallback', sans-serif;
+  --fonte-texto:'Inter', 'Inter Fallback', sans-serif;
+  --fonte-mono:'Space Mono', monospace;
+
+  --raio:14px;
+  --largura-max:1180px;
+}
+
+/* =========================================================
+   FALLBACK DE FONTE (reduz CLS na troca pela webfont)
+   Métricas calculadas a partir dos arquivos reais de Anton/Inter
+   e da Arial local, pelo mesmo método do next/font ("Fontaine"):
+   compara a largura média das letras a-z e as métricas verticais
+   (ascent/descent/lineGap) pra a Arial local ocupar o mesmo espaço
+   que a webfont vai ocupar assim que carregar.
+========================================================= */
+@font-face{
+  font-family:'Anton Fallback';
+  src: local('Arial');
+  ascent-override: 127.57%;
+  descent-override: 35.69%;
+  line-gap-override: 0%;
+  size-adjust: 92.2%;
+}
+@font-face{
+  font-family:'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90%;
+  descent-override: 22.41%;
+  line-gap-override: 0%;
+  size-adjust: 107.64%;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+.sprite-oculto{ position:absolute; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background: var(--grafite);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+
+:focus-visible{
+  outline: 2px solid var(--amarelo);
+  outline-offset: 3px;
+}
+
+.rotulo-secao{
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  color: var(--amarelo);
+  letter-spacing:.03em;
+  margin-bottom: 14px;
+}
+
+.titulo-secao{
+  font-family: var(--fonte-display);
+  font-weight:400;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  line-height:1.1;
+  margin-bottom: 20px;
+}
+.titulo-secao--pequeno{ font-size: 1.3rem; }
+
+
+@media (min-width: 960px){
+  .titulo-secao{ font-size: 2.1rem; }
+}

@@ -1,0 +1,46 @@
+/* =========================================================
+   BANNER DE COOKIES
+========================================================= */
+.banner-cookies{
+  position: fixed;
+  left:0; right:0; bottom:0;
+  z-index: 70;
+  background: var(--grafite-alto);
+  border-top: 1px solid var(--borda);
+  padding: 18px 20px calc(18px + env(safe-area-inset-bottom));
+  box-shadow: 0 -16px 32px -16px rgba(0,0,0,.5);
+}
+.banner-cookies[hidden]{ display:none; }
+.banner-cookies__titulo{
+  font-family: var(--fonte-texto);
+  font-weight:700;
+  font-size:.95rem;
+  margin-bottom: 6px;
+}
+.banner-cookies__texto{
+  color: var(--texto-suave);
+  font-size:.875rem;
+  line-height:1.5;
+  margin-bottom: 14px;
+  max-width: 62ch;
+}
+.banner-cookies__texto a{ color: var(--amarelo); text-decoration: underline; }
+.banner-cookies__acoes{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+}
+
+@media (min-width: 960px){
+  .banner-cookies{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 32px;
+    padding: 18px 32px;
+  }
+  .banner-cookies__conteudo{ flex:1; max-width: var(--largura-max); }
+  .banner-cookies__titulo{ margin-bottom:2px; }
+  .banner-cookies__texto{ margin-bottom:0; }
+  .banner-cookies__acoes{ flex-shrink:0; }
+}

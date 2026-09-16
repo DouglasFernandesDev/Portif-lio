@@ -1,0 +1,36 @@
+/* =========================================================
+   WHATSAPP FLUTUANTE
+========================================================= */
+.whatsapp-flutuante{
+  position: fixed;
+  bottom: 22px;
+  right: 20px;
+  z-index: 60;
+  width: 58px; height:58px;
+  border-radius:50%;
+  background:#25d366;
+  color:#0b0f14;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 12px 26px -8px rgba(37,211,102,.6);
+  transition: transform .2s ease;
+}
+.whatsapp-flutuante svg{ width:28px; height:28px; }
+.whatsapp-flutuante:hover{ transform: scale(1.08); }
+.whatsapp-flutuante__anel{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border: 2px solid #25d366;
+  animation: pulsar 2.2s ease-out infinite;
+}
+@keyframes pulsar{
+  0%{ transform: scale(1); opacity:.7; }
+  100%{ transform: scale(1.6); opacity:0; }
+}
+
+
+@media (min-width: 960px){
+  .whatsapp-flutuante{ right: 32px; bottom: 32px; }
+}

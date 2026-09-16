@@ -1,0 +1,50 @@
+/* =========================================================
+   COMO FUNCIONA (PROCESSO)
+========================================================= */
+.processo{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+.passo{
+  position:relative;
+  padding: 26px 22px 22px;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--grafite-alto);
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 16px 32px -24px rgba(0,0,0,.6);
+}
+.passo::before{
+  content:"";
+  display:block;
+  height:4px;
+  border-radius:2px;
+  margin-bottom:20px;
+  background: var(--borda);
+}
+.passo:nth-child(1)::before{ background: linear-gradient(90deg, var(--amarelo) 33%, var(--borda) 33%); }
+.passo:nth-child(2)::before{ background: linear-gradient(90deg, var(--amarelo) 66%, var(--borda) 66%); }
+.passo:nth-child(3)::before{ background: linear-gradient(90deg, var(--amarelo) 100%, var(--borda) 100%); }
+.passo__numero{
+  font-family: var(--fonte-display);
+  font-size: 2.2rem;
+  color: var(--amarelo);
+  line-height:1;
+  display:block;
+  margin-bottom: 12px;
+}
+.passo h3{
+  font-family: var(--fonte-texto);
+  font-weight:700;
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+}
+.passo p{
+  color: var(--texto-suave);
+  font-size: .92rem;
+}
+
+
+@media (min-width: 640px){
+  .processo{ grid-template-columns: repeat(3, 1fr); }
+}

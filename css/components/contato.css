@@ -1,0 +1,249 @@
+/* =========================================================
+   CONTATO
+========================================================= */
+.contato__cabecalho{
+  position:relative;
+  text-align:center;
+  padding: 70px 20px 60px;
+  background:
+    radial-gradient(circle at 20% 10%, var(--amarelo-suave), transparent 55%),
+    radial-gradient(circle at 85% 30%, var(--verde-suave), transparent 55%),
+    var(--grafite);
+  overflow:hidden;
+}
+.contato__cabecalho .rotulo-secao{ justify-content:center; display:flex; }
+.contato__titulo-grande{
+  font-family: var(--fonte-display);
+  font-weight:400;
+  text-transform: uppercase;
+  font-size: 2.1rem;
+  line-height:1.08;
+  max-width: 18ch;
+  margin: 0 auto 18px;
+}
+.contato__titulo-grande em{ font-style:normal; color: var(--amarelo); }
+.contato__texto-grande{
+  color: var(--texto-suave);
+  max-width: 48ch;
+  margin: 0 auto 28px;
+}
+
+.contato__corpo{
+  padding: 60px 20px 70px;
+  max-width: var(--largura-max);
+  margin: 0 auto;
+}
+.contato__estrutura{
+  display:flex;
+  flex-direction:column;
+  gap: 36px;
+}
+.contato__introducao{
+  display:flex;
+  flex-direction:column;
+}
+.contato__texto{
+  color: var(--texto-suave);
+  max-width: 480px;
+  margin-bottom: 26px;
+}
+.formulario-whatsapp{
+  background: var(--grafite-alto);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 20px;
+  margin-top: 30px;
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+}
+.formulario-whatsapp__legenda{
+  font-family: var(--fonte-texto);
+  font-weight:700;
+  font-size: .95rem;
+}
+.formulario-whatsapp__campo{
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+}
+.formulario-whatsapp__campo label{
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing:.04em;
+}
+.formulario-whatsapp__campo input,
+.formulario-whatsapp__campo textarea{
+  background: var(--grafite);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 13px 14px;
+  min-height:44px;
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size:.9rem;
+  resize: vertical;
+}
+.formulario-whatsapp__campo input:focus,
+.formulario-whatsapp__campo textarea:focus{
+  outline: 2px solid var(--amarelo);
+  outline-offset: 1px;
+  border-color: var(--amarelo);
+}
+.formulario-whatsapp__enviar{
+  background:#25d366;
+  color:#0b0f14;
+  gap: 8px;
+  box-shadow: 0 10px 24px -10px rgba(37,211,102,.5);
+}
+.formulario-whatsapp__enviar:hover{ transform: translateY(-2px); }
+.formulario-whatsapp__enviar svg{ width:18px; height:18px; }
+
+.formulario-whatsapp__aviso-popup{
+  display:block;
+  margin-top:12px;
+  padding:12px 14px;
+  border-radius: var(--raio);
+  background: var(--amarelo-suave);
+  color: var(--amarelo);
+  font-size:.85rem;
+  text-align:center;
+  text-decoration: underline;
+}
+/* [hidden] tem a mesma especificidade da regra acima; sem este seletor
+   combinado ela venceria por ordem de origem e o aviso ficaria visível
+   mesmo com o atributo hidden aplicado pelo script.js. */
+.formulario-whatsapp__aviso-popup[hidden]{ display:none; }
+
+.contato__grade{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.cartao-contato{
+  --marca: var(--amarelo);
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap: 16px;
+  padding: 16px 18px;
+  background: var(--grafite);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  overflow:hidden;
+  box-shadow: 0 16px 32px -24px rgba(0,0,0,.6);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.cartao-contato::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(120deg, var(--marca), transparent 60%);
+  opacity:0;
+  transition: opacity .25s ease;
+}
+.cartao-contato:hover{
+  transform: translateY(-3px);
+  border-color: var(--marca);
+}
+.cartao-contato:hover::before{ opacity:.1; }
+
+.cartao-contato__icone{
+  position:relative;
+  z-index:1;
+  flex-shrink:0;
+  width: 46px; height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: var(--grafite-alto);
+  border: 1px solid var(--borda);
+  color: var(--marca);
+  transition: background .2s ease, color .2s ease;
+}
+.cartao-contato__icone svg{ width:22px; height:22px; }
+.cartao-contato:hover .cartao-contato__icone{
+  background: var(--marca);
+  color: var(--grafite);
+}
+
+.cartao-contato__info{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  gap: 2px;
+  min-width:0;
+  flex:1;
+}
+.cartao-contato__titulo{
+  font-family: var(--fonte-texto);
+  font-weight:700;
+  font-size: .95rem;
+}
+.cartao-contato__valor{
+  font-family: var(--fonte-mono);
+  font-size: .72rem;
+  color: var(--texto-suave);
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+.cartao-contato__seta{
+  position:relative;
+  z-index:1;
+  flex-shrink:0;
+  color: var(--texto-suave);
+  font-size: 1.1rem;
+  transition: transform .2s ease, color .2s ease;
+}
+.cartao-contato:hover .cartao-contato__seta{
+  transform: translateX(4px);
+  color: var(--marca);
+}
+
+.cartao-contato--whatsapp{ --marca:#25d366; }
+.cartao-contato--instagram{ --marca:#e1306c; }
+.cartao-contato--linkedin{ --marca:#0a66c2; }
+.cartao-contato--github{ --marca: var(--texto); }
+.cartao-contato--email{ --marca: var(--amarelo); }
+
+
+@media (min-width: 640px){
+  .contato__titulo-grande{ font-size: 2.6rem; }
+}
+
+@media (min-width: 960px){
+  .contato__titulo-grande{ font-size: 3.1rem; }
+
+  .contato__estrutura{
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 70px;
+  }
+  .contato__introducao{
+    flex: 0 0 360px;
+  }
+  .contato__texto{ font-size: 1.02rem; }
+
+  .contato__grade{
+    flex: 1;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .cartao-contato{
+    padding: 20px;
+    border-radius: 16px;
+  }
+  .cartao-contato__icone{ width: 52px; height:52px; }
+  .cartao-contato__titulo{ font-size: 1.05rem; }
+  .cartao-contato--email{
+    grid-column: 1 / -1;
+    background: linear-gradient(120deg, var(--grafite), var(--grafite-alto));
+  }
+}

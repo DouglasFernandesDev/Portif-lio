@@ -83,6 +83,3 @@ export function iniciarConsentimentoCookies() {
   });
 }
 
-// Carregado como <script type="module">, portanto adiado como defer: o DOM
-// já está pronto quando este código roda.
-iniciarConsentimentoCookies();

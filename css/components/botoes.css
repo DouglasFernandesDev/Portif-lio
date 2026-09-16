@@ -1,0 +1,31 @@
+/* =========================================================
+   BOTÕES
+========================================================= */
+.botao{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding: 13px 24px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight:700;
+  font-size:.92rem;
+  background: none;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+  border: 1px solid transparent;
+}
+.botao--primario{
+  background: var(--amarelo);
+  color: var(--grafite);
+  box-shadow: 0 10px 24px -10px rgba(255,197,61,.5);
+}
+.botao--primario:hover{ transform: translateY(-2px); }
+.botao--secundario{
+  border-color: var(--borda);
+  color: var(--texto);
+}
+.botao--secundario:hover{ border-color: var(--amarelo); color: var(--amarelo); }
+.botao--grande{ padding: 15px 30px; font-size:1rem; }
+

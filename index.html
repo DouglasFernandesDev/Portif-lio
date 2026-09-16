@@ -11,10 +11,10 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Douglas Fernandes — Desenvolvedor Front-end em Iguaba Grande - RJ">
 <meta property="og:description" content="Sites que transformam visita em cliente. Landing pages para negócios locais em Iguaba Grande - RJ.">
-<meta property="og:image" content="https://douglasfernandesdev.github.io/Portif-lio/imagem/og-image.jpg">
+<meta property="og:image" content="https://douglasfernandesdev.github.io/Portif-lio/assets/images/og-image.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://douglasfernandesdev.github.io/Portif-lio/imagem/og-image.jpg">
+<meta name="twitter:image" content="https://douglasfernandesdev.github.io/Portif-lio/assets/images/og-image.jpg">
 
 <!-- frame-ancestors exige header HTTP (não funciona via <meta>) e o GitHub Pages não permite configurar headers; sem clickjacking protection nesse ponto. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://js.sentry-cdn.com https://browser.sentry-cdn.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.ingest.sentry.io https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'; worker-src 'self' blob:">
@@ -22,13 +22,25 @@
 <!-- Sentry Loader Script: carregado o quanto antes pra capturar erros de qualquer parte da página -->
 <script src="https://js.sentry-cdn.com/90d9acc795fa257833e94955dda0f5dd.min.js" crossorigin="anonymous"></script>
 
-<link rel="icon" href="imagem/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="estilo.css">
-<link rel="stylesheet" href="responsivo.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components/cabecalho.css">
+<link rel="stylesheet" href="css/components/botoes.css">
+<link rel="stylesheet" href="css/components/capa.css">
+<link rel="stylesheet" href="css/components/sobre.css">
+<link rel="stylesheet" href="css/components/competencias.css">
+<link rel="stylesheet" href="css/components/processo.css">
+<link rel="stylesheet" href="css/components/vitrine.css">
+<link rel="stylesheet" href="css/components/contato.css">
+<link rel="stylesheet" href="css/components/rodape.css">
+<link rel="stylesheet" href="css/components/whatsapp-flutuante.css">
+<link rel="stylesheet" href="css/components/banner-cookies.css">
+<link rel="stylesheet" href="css/utilitarios.css">
 
 <script type="application/ld+json">
 {
@@ -103,7 +115,7 @@
 
     <div class="capa__rodape">
       <span class="capa__foto">
-        <img src="imagem/perfil.jpg" alt="Foto de Douglas Fernandes" width="132" height="132">
+        <img src="assets/images/perfil.jpg" alt="Foto de Douglas Fernandes" width="132" height="132">
       </span>
       <span class="capa__assinatura"><strong>Douglas Fernandes</strong><br>Iguaba Grande - RJ · remoto</span>
     </div>
@@ -213,7 +225,7 @@
         <span class="vitrine__status">no ar</span>
       </div>
       <div class="vitrine__janela">
-        <img src="imagem/projetos/dr-lauro.jpg" alt="Print da página inicial do site Dr. Lauro Santos — Odontologia Estética" width="900" height="562" loading="lazy">
+        <img src="assets/images/projetos/dr-lauro.jpg" alt="Print da página inicial do site Dr. Lauro Santos — Odontologia Estética" width="900" height="562" loading="lazy">
       </div>
       <div class="vitrine__corpo">
         <h3>Dr. Lauro Santos</h3>
@@ -236,7 +248,7 @@
         <span class="vitrine__status">no ar</span>
       </div>
       <div class="vitrine__janela">
-        <img src="imagem/projetos/aline-tattoo.jpg" alt="Print da página inicial do site Aline Santos Tattoo" width="900" height="562" loading="lazy">
+        <img src="assets/images/projetos/aline-tattoo.jpg" alt="Print da página inicial do site Aline Santos Tattoo" width="900" height="562" loading="lazy">
       </div>
       <div class="vitrine__corpo">
         <h3>Aline Santos Tattoo</h3>
@@ -259,7 +271,7 @@
         <span class="vitrine__status">no ar</span>
       </div>
       <div class="vitrine__janela">
-        <img src="imagem/projetos/pizzaria-lagoinha.jpg" alt="Print do cardápio digital da Pizzaria Lagoinha" width="900" height="562" loading="lazy">
+        <img src="assets/images/projetos/pizzaria-lagoinha.jpg" alt="Print do cardápio digital da Pizzaria Lagoinha" width="900" height="562" loading="lazy">
       </div>
       <div class="vitrine__corpo">
         <h3>Pizzaria Lagoinha</h3>
@@ -282,7 +294,7 @@
         <span class="vitrine__status">no ar</span>
       </div>
       <div class="vitrine__janela">
-        <img src="imagem/projetos/sagrado-creperia.jpg" alt="Print da página inicial do cardápio digital da Sagrado Creperia" width="900" height="562" loading="lazy">
+        <img src="assets/images/projetos/sagrado-creperia.jpg" alt="Print da página inicial do cardápio digital da Sagrado Creperia" width="900" height="562" loading="lazy">
       </div>
       <div class="vitrine__corpo">
         <h3>Sagrado Creperia</h3>
@@ -449,7 +461,6 @@
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.9-.4-1.8-1-2.6-1.8-.7-.7-1.3-1.6-1.7-2.4-.1-.3 0-.4.1-.6.2-.2.7-.8.9-1 .1-.2.1-.4 0-.6-.1-.2-.7-1.6-.9-2.1-.2-.5-.4-.4-.6-.4h-.6c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.6.1 1.2.6 2.4 1.4 3.5 1.4 2 3.1 3.6 5.3 4.5 1.9.8 2.6.6 3.1.5.6-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.2-.2-.5-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.3C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3.4.9.9-3.3-.2-.3C3.7 14.7 3.2 13.4 3.2 12 3.2 7.2 7.2 3.2 12 3.2S20.8 7.2 20.8 12 16.8 20.2 12 20.2z"/></svg>
 </a>
 
-<script src="script.js"></script>
-<script type="module" src="js/modules/consentimento-cookies.js"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

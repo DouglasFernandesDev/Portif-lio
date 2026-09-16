@@ -1,0 +1,138 @@
+/* =========================================================
+   PROJETOS ("VITRINES")
+========================================================= */
+.projetos__grade{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.vitrine{
+  background: var(--grafite-alto);
+  border:1px solid var(--borda);
+  border-radius: var(--raio);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow: 0 16px 32px -24px rgba(0,0,0,.6);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.vitrine:hover{
+  transform: translateY(-4px);
+  border-color: var(--amarelo);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,.65);
+}
+/* barra estilo toldo de loja, com borda recortada */
+.vitrine__toldo{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding: 10px 14px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--grafite) 0 18px,
+    var(--grafite-alto) 18px 36px
+  );
+  border-bottom: 1px solid var(--borda);
+}
+.vitrine__etiqueta{
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  color: var(--grafite);
+  background: var(--amarelo);
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-weight:700;
+}
+.vitrine__status{
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  color: var(--texto-suave);
+}
+.vitrine__janela{
+  aspect-ratio: 16/10;
+  overflow:hidden;
+  background: var(--grafite);
+}
+.vitrine__janela img{
+  width:100%; height:100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform .4s ease;
+}
+.vitrine:hover .vitrine__janela img{ transform: scale(1.04); }
+.vitrine__janela--vazia{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--texto-suave);
+  font-family: var(--fonte-mono);
+  font-size:.85rem;
+  text-align:center;
+  padding: 20px;
+}
+.vitrine__corpo{
+  padding: 22px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.vitrine h3{
+  font-family: var(--fonte-display);
+  font-weight:400;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+.vitrine__caso{
+  margin-bottom: 16px;
+}
+.vitrine__caso dt{
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  text-transform: uppercase;
+  letter-spacing:.04em;
+  color: var(--amarelo);
+  margin-bottom: 3px;
+}
+.vitrine__caso dd{
+  color: var(--texto-suave);
+  font-size:.88rem;
+  margin-bottom: 12px;
+}
+.vitrine__tecnologias{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+  margin: 4px 0 18px;
+}
+.vitrine__tecnologias span{
+  font-family: var(--fonte-mono);
+  font-size:.875rem;
+  color: var(--texto-suave);
+  border:1px solid var(--borda);
+  padding: 3px 9px;
+  border-radius: 100px;
+}
+.vitrine__link{
+  margin-top:auto;
+  color: var(--amarelo);
+  font-weight:700;
+  font-size:.9rem;
+  display:flex;
+  align-items:center;
+  min-height:44px;
+}
+.vitrine__link--desabilitado{
+  color: var(--texto-suave);
+  cursor: default;
+}
+
+
+@media (min-width: 640px){
+  .projetos__grade{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1200px){
+  .projetos__grade{ grid-template-columns: repeat(3, 1fr); }
+}
