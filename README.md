@@ -64,6 +64,16 @@ npm run lint:js
 npm run lint:css
 ```
 
+## Testes
+
+Testes de ponta a ponta com [Playwright](https://playwright.dev/), um
+arquivo por vez — sobem um `live-server` numa porta dedicada
+automaticamente, não precisa iniciar o servidor antes:
+
+```bash
+npx playwright test tests/pagina-inicial.spec.js
+```
+
 ## Publicação
 
 Merge na `main` dispara o GitHub Pages automaticamente. Não há build:

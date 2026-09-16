@@ -10,6 +10,7 @@
     "lint": "npm run lint:js && npm run lint:css"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "eslint": "^9.0.0",
     "live-server": "^1.2.2",
     "stylelint": "^16.0.0",

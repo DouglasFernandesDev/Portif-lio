@@ -1,6 +1,6 @@
 export default [
   {
-    ignores: ['imagem/**', '.claude/**'],
+    ignores: ['assets/**', '.claude/**', 'test-results/**', 'playwright-report/**'],
   },
   {
     files: ['**/*.js'],
@@ -17,6 +17,7 @@ export default [
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
         IntersectionObserver: 'readonly',
+        URL: 'readonly',
       },
     },
     rules: {
