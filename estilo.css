@@ -18,12 +18,37 @@
   --texto-suave:#96a0ac;
   --borda: rgba(236,231,220,.10);
 
-  --fonte-display:'Anton', sans-serif;
-  --fonte-texto:'Inter', sans-serif;
+  --fonte-display:'Anton', 'Anton Fallback', sans-serif;
+  --fonte-texto:'Inter', 'Inter Fallback', sans-serif;
   --fonte-mono:'Space Mono', monospace;
 
   --raio:14px;
   --largura-max:1180px;
+}
+
+/* =========================================================
+   FALLBACK DE FONTE (reduz CLS na troca pela webfont)
+   Métricas calculadas a partir dos arquivos reais de Anton/Inter
+   e da Arial local, pelo mesmo método do next/font ("Fontaine"):
+   compara a largura média das letras a-z e as métricas verticais
+   (ascent/descent/lineGap) pra a Arial local ocupar o mesmo espaço
+   que a webfont vai ocupar assim que carregar.
+========================================================= */
+@font-face{
+  font-family:'Anton Fallback';
+  src: local('Arial');
+  ascent-override: 127.57%;
+  descent-override: 35.69%;
+  line-gap-override: 0%;
+  size-adjust: 92.2%;
+}
+@font-face{
+  font-family:'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90%;
+  descent-override: 22.41%;
+  line-gap-override: 0%;
+  size-adjust: 107.64%;
 }
 
 *{ margin:0; padding:0; box-sizing:border-box; }
@@ -181,7 +206,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .capa__fundo{
   position:absolute;
-  inset:-20% -10% auto -10%;
+  inset:-20% -10% auto;
   height: 500px;
   background: radial-gradient(circle at 25% 15%, var(--amarelo-suave), transparent 55%),
               radial-gradient(circle at 85% 0%, var(--verde-suave), transparent 55%);
@@ -271,7 +296,8 @@ a{ color:inherit; text-decoration:none; }
   gap:16px;
 }
 .capa__foto{
-  width:92px; height:92px;
+  width: 180px; 
+  height: 180px;
   border-radius:50%;
   padding:3px;
   background: linear-gradient(135deg, var(--amarelo), var(--verde));
@@ -601,7 +627,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .vitrine__tecnologias span{
   font-family: var(--fonte-mono);
-  font-size:.7rem;
+  font-size:.875rem;
   color: var(--texto-suave);
   border:1px solid var(--borda);
   padding: 3px 9px;
@@ -692,7 +718,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .formulario-whatsapp__campo label{
   font-family: var(--fonte-mono);
-  font-size:.72rem;
+  font-size:.875rem;
   color: var(--texto-suave);
   text-transform: uppercase;
   letter-spacing:.04em;

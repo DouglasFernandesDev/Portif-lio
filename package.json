@@ -1,0 +1,18 @@
+{
+  "name": "portfolio-douglas-fernandes",
+  "private": true,
+  "type": "module",
+  "description": "Portfólio estático (HTML/CSS/JS) de Douglas Fernandes.",
+  "scripts": {
+    "dev": "live-server",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"**/*.css\"",
+    "lint": "npm run lint:js && npm run lint:css"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "live-server": "^1.2.2",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0"
+  }
+}
