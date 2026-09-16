@@ -1,7 +1,7 @@
 ---
 name: monitoramento
 description: >
-  Configura monitoramento de erros no cliente (Sentry via SDK vendorizado,
+  Configura monitoramento de erros no cliente (Sentry via Loader Script,
   sem build step) e de disponibilidade (monitor de uptime externo apontando
   pro site estático). Dispara em: "Sentry", "monitorar erros", "error
   tracking", "uptime", "o site caiu", "health check", "alerta de queda",
@@ -21,61 +21,87 @@ GitHub Pages estar respondendo.
 
 ---
 
-## Passo 0 — Alinhar com o usuário
+## Passo 0 — Checar o que já existe antes de perguntar
+
+```bash
+grep -rn "sentry-cdn.com" *.html */*.html 2>/dev/null
+```
+
+Se já existir um `<script src="https://js.sentry-cdn.com/...">` em pelo
+menos uma página, o Sentry **já está instalado** — não pergunte a chave de
+novo. Se for adicionar a uma página nova que ainda não tem o script,
+reaproveite a mesma chave já usada nas outras (copie a tag inteira,
+`src` e `crossorigin` incluídos) e replique também os trechos de CSP
+(`script-src`, `connect-src`, `worker-src`) dessa página — ver Parte A.
+
+Se a chave alguma vez parar de funcionar (loader retorna 500, ou avisa no
+console "isn't working anymore, check your configuration"), é sinal de
+que ela foi regenerada no painel do Sentry — não é bug de CSP nem deste
+código; peça a chave atual em Settings → Projects → [projeto] → Loader
+Script e atualize em **todas** as páginas que a usam.
+
+Só siga para o Passo 0.1 se nenhuma página tiver o script (Sentry nunca
+foi instalado neste projeto).
+
+## Passo 0.1 — Alinhar com o usuário
 
 Pergunte e **espere resposta**:
 
-1. Já existe conta no Sentry? Precisa do **DSN**.
+1. Já existe conta no Sentry? Se sim, peça pra abrir o projeto (Browser
+   JavaScript) e copiar o **Loader Script** pronto (Settings → Projects →
+   [projeto] → Client Keys → Loader Script) — é mais simples que pedir só
+   o DSN, porque a tag `<script>` já vem completa.
 2. Para onde os alertas de queda devem ir (e-mail, WhatsApp)?
 
-Sem DSN não dá para concluir a parte de erros — faça a parte de uptime e
-deixe a de Sentry pendente, dizendo isso claramente.
+Sem o Loader Script não dá para concluir a parte de erros — faça a parte
+de uptime e deixe a de Sentry pendente, dizendo isso claramente.
 
 ---
 
 ## Parte A — Sentry (erros no cliente)
 
 Sem `npm install`: este projeto não tem build step em produção — GitHub
-Pages serve os arquivos como estão no repositório. Duas opções:
+Pages serve os arquivos como estão no repositório. Use o **Loader
+Script** (é o que já está instalado nas páginas existentes e foi testado
+de ponta a ponta) — cole a tag inteira que o Sentry gerou, bem no topo do
+`<head>`, antes dos outros recursos:
 
-**A. CDN direto** — mais simples, mas é um terceiro carregando de fora do
-domínio; exige abrir a CSP para `browser.sentry-cdn.com`:
 ```html
-<script src="https://browser.sentry-cdn.com/<versão>/bundle.tracing.min.js" crossorigin="anonymous"></script>
+<script src="https://js.sentry-cdn.com/<chave>.min.js" crossorigin="anonymous"></script>
 ```
 
-**B. Vendorizado (recomendado — mantém `script-src 'self'` na CSP)** —
-baixe o bundle do Sentry Browser SDK e salve em `js/vendor/sentry.min.js`,
-versionado no repositório:
-```html
-<script src="js/vendor/sentry.min.js"></script>
-```
+Não escreva `Sentry.init()` manualmente — o Loader Script já se
+autoconfigura com base no que está definido no painel do Sentry
+(Settings → Projects → [projeto] → Loader Script: versão do SDK,
+tracing, session replay). Mudar esses recursos é feito **na interface do
+Sentry**, não no código.
 
-Em qualquer uma, inicialize num módulo próprio
-(`js/modules/monitoramento-erros.js`), carregado **depois** do SDK:
+**Duas etapas de rede, não uma.** O loader (`js.sentry-cdn.com`) é só um
+stub pequeno — ele mesmo busca o SDK completo de um segundo domínio,
+`browser.sentry-cdn.com`. A CSP precisa liberar os dois em `script-src`,
+senão o segundo carregamento é bloqueado (isso só aparece testando de
+verdade no navegador, não é óbvio lendo a doc do Sentry).
 
-```js
-Sentry.init({
-  dsn: 'SEU_DSN_AQUI',
-  tracesSampleRate: 0.1,
-  environment: location.hostname === 'localhost' ? 'development' : 'production',
-});
-```
-
-O DSN de um projeto client-side não é segredo por natureza do SDK de
-browser — mesmo assim, mantenha-o isolado num único módulo, fácil de
-trocar se precisar rotacionar.
-
-**Ajuste de CSP.** Adicione o host de ingest do Sentry (formato
-`https://<id>.ingest.us.sentry.io` ou `.ingest.de.sentry.io`, conforme a
-região do projeto) em `connect-src` no `<meta http-equiv="Content-Security-Policy">`
-de `index.html` — sem isso, o SDK carrega mas as requisições de erro são
-bloqueadas pela própria política já configurada no site.
+**Ajuste de CSP** (as 4 diretivas, todas necessárias — testadas uma a uma
+nesta sessão, cada uma pega uma etapa diferente do fluxo):
+- `script-src`: adicionar `https://js.sentry-cdn.com` e
+  `https://browser.sentry-cdn.com`
+- `connect-src`: adicionar o host de ingest — formato
+  `https://<id>.ingest.us.sentry.io` ou `.ingest.de.sentry.io` conforme a
+  região do projeto (não dá pra saber qual sem testar; ver Passo final)
+- `worker-src`: precisa existir com `'self' blob:` — o SDK cria um Web
+  Worker em segundo plano (provavelmente para compressão do session
+  replay); sem essa diretiva, `worker-src` cai no fallback de
+  `script-src`, que não libera `blob:`, e o worker é bloqueado
+- `img-src`: geralmente não precisa mudar, mas confira se não há erro de
+  imagem/pixel do Sentry no console
 
 **O que este site não tem** (e por isso não existe equivalente aqui):
 Server Components, Server Actions, Route Handlers, middleware, runtime
 edge. **Não** crie `sentry.server.config.ts`, `sentry.edge.config.ts` nem
-`instrumentation.ts` — não fazem sentido sem servidor.
+`instrumentation.ts` — não fazem sentido sem servidor. Também não crie
+`js/vendor/sentry.min.js` nem um módulo de inicialização — o Loader
+Script substitui os dois.
 
 ---
 
@@ -108,26 +134,49 @@ direto para a home:
 
 ## Passo final — Verificar
 
-1. Criar um erro de teste temporário (`throw new Error('teste-sentry')`
-   num `<script>` isolado), servir local com `npx live-server`, abrir no
-   navegador e confirmar que a issue **apareceu no painel do Sentry**.
-   Remover o script de teste depois.
-2. `curl -I https://douglasfernandesdev.github.io/Portif-lio/` → confirmar
-   status 200.
-3. Conferir no console do navegador (`list_console_messages`) que a CSP
-   não está bloqueando o SDK nem o envio de eventos ao host de ingest.
-4. Pausar/derrubar o monitor de teste (se a ferramenta permitir simular
-   queda) e confirmar que o alerta chegou ao destino combinado.
+Teste **local primeiro**, com um servidor limpo (não o `live-server` — o
+client de live-reload dele injeta um script que gera falso-positivo de
+CSP; use `npx http-server . -p <porta> -s`):
 
-Só declare que funciona depois de ver a issue no painel e o alerta
-chegando — configuração escrita não é monitoramento comprovado.
+1. Abrir o site, esperar ~1,5s (o loader carrega o bundle completo de
+   forma assíncrona), disparar um erro de teste via console:
+   `try { throw new Error('teste-sentry') } catch(e) { window.Sentry.captureException(e) }`.
+2. Conferir `list_network_requests` filtrando por `fetch`/`xhr` — precisa
+   aparecer um `POST .../envelope/?...` pro host de ingest com status
+   **200**. Isso é a prova real; o painel do Sentry pode levar alguns
+   segundos a mais pra mostrar a issue.
+3. Conferir `list_console_messages` — zero erros de CSP, e **nenhum**
+   aviso do tipo "isn't working anymore, check your configuration" (esse
+   aviso específico significa que a chave no código não bate mais com a
+   configuração atual do projeto no painel — ver Passo 0).
+
+Depois de publicar, repita o mesmo teste na **URL de produção** — não
+assuma que "funcionou local" implica "funciona no ar". Duas pegadinhas
+reais encontradas fazendo isso:
+- **Propagação**: mudanças no painel do Sentry (Allowed Domains, chave
+  regenerada) podem levar alguns minutos pra valer nos servidores deles.
+  Se o teste falhar logo após mudar algo lá, espere e teste de novo antes
+  de assumir que é bug de código.
+- **Cache do navegador**: ao reabrir a URL de produção depois de um
+  deploy nesta mesma aba/perfil de navegador, use reload com
+  `ignoreCache: true` (ou `curl` direto) — uma navegação comum pode
+  reaproveitar o HTML antigo em cache e fazer parecer que o deploy não
+  pegou, quando na verdade só a aba está desatualizada.
+
+Só declare que funciona depois de ver o `POST` com 200 — configuração
+escrita, ou um aviso no console que sumiu, não é prova suficiente.
+
+Pra disponibilidade: pausar/derrubar o monitor de teste (se a ferramenta
+permitir simular queda) e confirmar que o alerta chegou ao destino
+combinado.
 
 ---
 
 ## Checklist final
 
-- [ ] SDK do Sentry vendorizado em `js/vendor/` (ou CDN liberado explicitamente na CSP)
-- [ ] `connect-src` da CSP inclui o host de ingest do Sentry
-- [ ] Erro de teste visto no painel do Sentry, script de teste removido
+- [ ] Loader Script instalado no `<head>`, antes dos outros recursos, em todas as páginas que precisam
+- [ ] CSP com as 4 diretivas ajustadas: `script-src` (js.sentry-cdn.com + browser.sentry-cdn.com), `connect-src` (host de ingest), `worker-src` ('self' blob:)
+- [ ] Erro de teste confirmado via `POST .../envelope/` com 200 — local **e** em produção
+- [ ] Nenhum aviso "isn't working anymore" no console
 - [ ] Monitor externo ativo na home, com alerta testado
-- [ ] Nenhum arquivo de config de servidor/edge criado (não se aplica a este projeto)
+- [ ] Nenhum arquivo de config de servidor/edge criado (não se aplica a este projeto), nenhum SDK vendorizado nem `Sentry.init()` manual (o Loader Script cobre os dois)

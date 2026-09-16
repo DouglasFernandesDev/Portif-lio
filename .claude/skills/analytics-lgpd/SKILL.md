@@ -22,7 +22,23 @@ isso é feito sem framework: sem `next/script`, sem componente React, sem
 
 ---
 
-## Passo 0 — Alinhar com o usuário antes de codar
+## Passo 0 — Checar o que já existe antes de perguntar
+
+```bash
+grep -rn "GA_ID" js/modules/consentimento-cookies.js 2>/dev/null
+```
+
+Se o arquivo já existir com um `GA_ID` preenchido, o Analytics **já está
+instalado** — não pergunte de novo, não peça o ID de novo. Nesse caso, esta
+skill só se aplica se o pedido for outra coisa (trocar de ID, adicionar a
+uma página nova que ainda não tem o banner, revisar o consentimento). Se
+for adicionar a uma página nova, reaproveite o `GA_ID` já usado nas outras
+páginas — não invente nem peça de novo.
+
+Só siga para o Passo 0.1 se `js/modules/consentimento-cookies.js` não
+existir ainda (analytics nunca foi instalado neste projeto).
+
+## Passo 0.1 — Alinhar com o usuário antes de codar
 
 Pergunte e **espere resposta**:
 
